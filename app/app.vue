@@ -1,75 +1,98 @@
-<script setup>
+<script setup lang="ts">
 useHead({
-  meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
   link: [{ rel: "icon", href: "/favicon.ico" }],
   htmlAttrs: {
     lang: "en",
   },
 });
 
-const title = "Nuxt Starter Template";
-const description =
-  "A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.";
+const route = useRoute();
 
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  ogImage: "https://ui.nuxt.com/assets/templates/nuxt/starter-light.png",
-  twitterCard: "summary_large_image",
-});
+const isLogbook = computed(() => route.path.startsWith("/logbook"));
 </script>
 
 <template>
   <UApp>
     <VitePwaManifest />
-    <UHeader>
-      <template #left>
-        <NuxtLink to="/">
-          <AppLogo class="w-auto h-6 shrink-0" />
-        </NuxtLink>
 
-        <TemplateMenu />
-      </template>
-
-      <template #right>
-        <UColorModeButton />
-
-        <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-      </template>
-    </UHeader>
-
-    <UMain>
+    <UMain class="shell">
       <NuxtPage />
     </UMain>
 
-    <USeparator icon="i-simple-icons-nuxtdotjs" />
+    <nav class="pill" aria-label="Main">
+      <span
+        class="pill__slider"
+        :class="{ 'pill__slider--logbook': isLogbook }"
+      />
 
-    <UFooter>
-      <template #left>
-        <p class="text-sm text-muted">
-          Built with Nuxt UI • © {{ new Date().getFullYear() }}
-        </p>
-      </template>
+      <NuxtLink
+        to="/"
+        class="pill__link"
+        :class="{ 'pill__link--active': !isLogbook }"
+      >
+        map
+      </NuxtLink>
 
-      <template #right>
-        <UButton
-          to="https://github.com/nuxt-ui-templates/starter"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-          color="neutral"
-          variant="ghost"
-        />
-      </template>
-    </UFooter>
+      <NuxtLink
+        to="/logbook"
+        class="pill__link"
+        :class="{ 'pill__link--active': isLogbook }"
+      >
+        logbook
+      </NuxtLink>
+    </nav>
   </UApp>
 </template>
+
+<style scoped>
+/* Mobile-first shell frame (docs/technical-notes.md — Responsive layout):
+   pages fill the viewport, and the pill floats above them at every size. */
+.shell {
+  min-height: 100dvh;
+}
+
+.pill {
+  position: fixed;
+  left: 50%;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: 20;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(16rem, calc(100vw - 2.5rem));
+  padding: 0.25rem;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  transform: translateX(-50%);
+  backdrop-filter: blur(8px);
+}
+
+.pill__slider {
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  width: calc(50% - 0.25rem);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  transition: transform 0.35s ease;
+}
+
+.pill__slider--logbook {
+  transform: translateX(100%);
+}
+
+.pill__link {
+  position: relative;
+  z-index: 1;
+  padding: 0.55rem 0;
+  font-size: 0.85rem;
+  text-align: center;
+  color: rgba(51, 65, 85, 0.6);
+  border-radius: 999px;
+  transition: color 0.25s ease;
+}
+
+.pill__link--active {
+  color: rgba(51, 65, 85, 0.9);
+}
+</style>

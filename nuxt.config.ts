@@ -2,10 +2,10 @@ import { defineNuxtConfig } from "nuxt/config";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
   modules: [
     "@nuxt/eslint",
     "@nuxt/ui",
-    "@nuxt/test-utils",
     "@nuxtjs/device",
     "@nuxtjs/google-fonts",
     "@pinia/nuxt",
@@ -16,7 +16,37 @@ export default defineNuxtConfig({
     enabled: true,
   },
   app: {
-    baseURL: "/nuxt-template/",
+    baseURL: "/",
+    head: {
+      title: "inner-weather",
+      meta: [
+        { charset: "utf-8" },
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1, viewport-fit=cover",
+        },
+        {
+          name: "description",
+          content:
+            "An atmospheric feelings map. No accounts, no servers, fully private.",
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: "inner-weather" },
+        { property: "og:title", content: "inner-weather" },
+        {
+          property: "og:description",
+          content:
+            "An atmospheric feelings map. No accounts, no servers, fully private.",
+        },
+        { name: "twitter:card", content: "summary" },
+        { name: "twitter:title", content: "inner-weather" },
+        {
+          name: "twitter:description",
+          content:
+            "An atmospheric feelings map. No accounts, no servers, fully private.",
+        },
+      ],
+    },
   },
   nitro: {
     preset: "github-pages",
@@ -28,7 +58,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-01-15",
   typescript: {
     tsConfig: {
-      include: ["eslint.config.mts", "test/**/*.ts"],
+      include: ["eslint.config.mts"],
     },
   },
   eslint: {
@@ -70,23 +100,23 @@ export default defineNuxtConfig({
   pwa: {
     registerType: "autoUpdate",
 
-    scope: "/nuxt-template/",
-    base: "/nuxt-template/",
+    scope: "/",
+    base: "/",
 
     manifest: {
-      name: "Nuxt Template",
-      short_name: "Nuxt",
-      description: "A Nuxt PWA Demo",
-      theme_color: "#000000",
-      background_color: "#ffffff",
+      name: "inner-weather",
+      short_name: "inner-weather",
+      description:
+        "An atmospheric feelings map. No accounts, no servers, fully private.",
+      theme_color: "#faf7f2",
+      background_color: "#faf7f2",
       display: "standalone",
-      orientation: "portrait",
-      start_url: "/nuxt-template/",
+      start_url: "/",
       icons: [],
     },
 
     workbox: {
-      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+      globPatterns: ["**/*.{js,css,html,png,svg,ico,woff,woff2,json}"],
     },
   },
 });

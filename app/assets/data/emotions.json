@@ -1,0 +1,67 @@
+[
+  {
+    "id": "content",
+    "word": "content",
+    "family": "joy",
+    "hue": "#e0a35c",
+    "definition": "A quiet, settled ease — nothing missing, nothing chasing you. Not excitement; the soft hum of being okay where you are.",
+    "examples": [
+      "a slow morning with nowhere to be",
+      "the first sip of something warm",
+      "sitting with a friend in comfortable silence"
+    ],
+    "relatedIds": ["delight", "gratitude"]
+  },
+  {
+    "id": "delight",
+    "word": "delight",
+    "family": "joy",
+    "hue": "#eec08a",
+    "definition": "A bright, bubbly lift — something small and lovely catches you off guard and lights you up.",
+    "examples": [
+      "a dog greeting you like you've been gone for years",
+      "finding money in a winter coat",
+      "a song you love coming on unexpectedly"
+    ],
+    "relatedIds": ["content"]
+  },
+  {
+    "id": "gratitude",
+    "word": "gratitude",
+    "family": "joy",
+    "hue": "#c98b45",
+    "definition": "A warm turning-toward — being glad that something or someone is in your life.",
+    "examples": [
+      "a friend checking in at exactly the right moment",
+      "noticing someone remembered something small you said",
+      "a quiet thank-you that really lands"
+    ],
+    "relatedIds": ["content"]
+  },
+  {
+    "id": "wistful",
+    "word": "wistful",
+    "family": "sadness",
+    "hue": "#8b9cbb",
+    "definition": "A gentle ache for something gone or not yet here — bittersweet, tender, a little faraway.",
+    "examples": [
+      "an old song that takes you back",
+      "passing a place you used to go",
+      "a happy memory that feels bittersweet now"
+    ],
+    "relatedIds": ["grief"]
+  },
+  {
+    "id": "grief",
+    "word": "grief",
+    "family": "sadness",
+    "hue": "#5c739c",
+    "definition": "A heavy sadness after a loss — when something that mattered is gone and the world feels changed by it.",
+    "examples": [
+      "a first holiday without someone",
+      "the quiet after a goodbye",
+      "hearing news that changes what's possible"
+    ],
+    "relatedIds": ["wistful"]
+  }
+]

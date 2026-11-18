@@ -1,0 +1,21 @@
+/**
+ * An emotion as it exists in the vocabulary — one word on the map.
+ * In-app copy may say "feeling" or "kept feeling"; code stays plain:
+ * `Emotion`, `RecordedEmotion`.
+ */
+export interface Emotion {
+  /** Stable identifier used by deep links and recorded emotions. */
+  id: string;
+  /** The word shown on the map and in the explorer. */
+  word: string;
+  /** Core feeling this word belongs to (3–5 families total). */
+  family: string;
+  /** CSS color of the family; sibling words vary only in lightness. */
+  hue: string;
+  /** Short, plain-language definition for the explorer. */
+  definition: string;
+  /** "It might show up as" — everyday situations. */
+  examples: string[];
+  /** Ids of nearby/similar emotions, for the bloom and explorer. */
+  relatedIds: string[];
+}
