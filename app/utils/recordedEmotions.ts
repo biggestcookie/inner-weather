@@ -37,7 +37,7 @@ export function createRecordedEmotion(emotionId: string): RecordedEmotion {
     id: crypto.randomUUID(),
     emotionId,
     occurredAt: now,
-    createdAt: now
+    createdAt: now,
   };
 }
 

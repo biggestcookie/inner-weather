@@ -1,67 +1,374 @@
 [
   {
+    "id": "joy",
+    "word": "joy",
+    "family": "joy",
+    "hue": "#e0a35c",
+    "definition": "A bright, open lift — something good is here and you feel lighter for it.",
+    "examples": [
+      "a friend's good news landing well",
+      "the first day of a holiday",
+      "laughing until your face hurts"
+    ]
+  },
+  {
+    "id": "sadness",
+    "word": "sadness",
+    "family": "sadness",
+    "hue": "#8b9cbb",
+    "definition": "A heavy, inward ache — something matters, and it hurts.",
+    "examples": [
+      "missing someone who isn't there",
+      "a hope that didn't land",
+      "the quiet after a goodbye"
+    ]
+  },
+  {
+    "id": "anger",
+    "word": "anger",
+    "family": "anger",
+    "hue": "#c97b6b",
+    "definition": "A hot, pushing energy — something feels wrong or unfair.",
+    "examples": [
+      "being talked over",
+      "a rule that only hurts you",
+      "watching someone get treated badly"
+    ]
+  },
+  {
+    "id": "fear",
+    "word": "fear",
+    "family": "fear",
+    "hue": "#8f83bd",
+    "definition": "A braced, alert tension — something might go wrong.",
+    "examples": [
+      "a message you don't want to open",
+      "the moment before a jump",
+      "a noise downstairs at night"
+    ]
+  },
+  {
+    "id": "calm",
+    "word": "calm",
+    "family": "calm",
+    "hue": "#8fae9a",
+    "definition": "A quiet, steady ease — nothing is pulling at you.",
+    "examples": [
+      "a slow breath with nowhere to be",
+      "a room that feels safe",
+      "the hush after rain"
+    ]
+  },
+  {
     "id": "content",
     "word": "content",
     "family": "joy",
     "hue": "#e0a35c",
+    "parentId": "joy",
     "definition": "A quiet, settled ease — nothing missing, nothing chasing you. Not excitement; the soft hum of being okay where you are.",
     "examples": [
       "a slow morning with nowhere to be",
       "the first sip of something warm",
       "sitting with a friend in comfortable silence"
-    ],
-    "relatedIds": ["delight", "gratitude"]
+    ]
   },
   {
     "id": "delight",
     "word": "delight",
     "family": "joy",
     "hue": "#eec08a",
+    "parentId": "joy",
     "definition": "A bright, bubbly lift — something small and lovely catches you off guard and lights you up.",
     "examples": [
       "a dog greeting you like you've been gone for years",
       "finding money in a winter coat",
       "a song you love coming on unexpectedly"
-    ],
-    "relatedIds": ["content"]
+    ]
   },
   {
     "id": "gratitude",
     "word": "gratitude",
     "family": "joy",
     "hue": "#c98b45",
+    "parentId": "joy",
     "definition": "A warm turning-toward — being glad that something or someone is in your life.",
     "examples": [
       "a friend checking in at exactly the right moment",
       "noticing someone remembered something small you said",
       "a quiet thank-you that really lands"
-    ],
-    "relatedIds": ["content"]
+    ]
+  },
+  {
+    "id": "playful",
+    "word": "playful",
+    "family": "joy",
+    "hue": "#d99a6a",
+    "parentId": "joy",
+    "definition": "A light, ticklish energy — silly, curious, up for almost anything.",
+    "examples": [
+      "an inside joke that keeps going all day",
+      "making up voices for your pet",
+      "a plan with no purpose besides fun"
+    ]
+  },
+  {
+    "id": "hopeful",
+    "word": "hopeful",
+    "family": "joy",
+    "hue": "#e8b878",
+    "parentId": "joy",
+    "definition": "A gentle leaning toward what's ahead — not certain, but open.",
+    "examples": [
+      "a reply that says let's talk",
+      "the first warm day of the year",
+      "applying for something you actually want"
+    ]
   },
   {
     "id": "wistful",
     "word": "wistful",
     "family": "sadness",
     "hue": "#8b9cbb",
+    "parentId": "sadness",
     "definition": "A gentle ache for something gone or not yet here — bittersweet, tender, a little faraway.",
     "examples": [
       "an old song that takes you back",
       "passing a place you used to go",
       "a happy memory that feels bittersweet now"
-    ],
-    "relatedIds": ["grief"]
+    ]
   },
   {
     "id": "grief",
     "word": "grief",
     "family": "sadness",
     "hue": "#5c739c",
+    "parentId": "sadness",
     "definition": "A heavy sadness after a loss — when something that mattered is gone and the world feels changed by it.",
     "examples": [
-      "a first holiday without someone",
-      "the quiet after a goodbye",
-      "hearing news that changes what's possible"
-    ],
-    "relatedIds": ["wistful"]
+      "a chair that stays empty",
+      "a tradition that no longer happens",
+      "not being able to tell someone your news"
+    ]
+  },
+  {
+    "id": "melancholy",
+    "word": "melancholy",
+    "family": "sadness",
+    "hue": "#7a8cab",
+    "parentId": "sadness",
+    "definition": "A soft, lingering sadness with no single cause — reflective, a little grey, not unpleasant.",
+    "examples": [
+      "a rainy afternoon where you stay in",
+      "the last light before dark",
+      "a film that leaves you quiet"
+    ]
+  },
+  {
+    "id": "lonely",
+    "word": "lonely",
+    "family": "sadness",
+    "hue": "#6f7f9e",
+    "parentId": "sadness",
+    "definition": "A quiet ache of being apart — missing company, or missing being seen.",
+    "examples": [
+      "a full room where you feel like a spectator",
+      "eating dinner with only your phone nearby",
+      "a weekend that nobody asked about"
+    ]
+  },
+  {
+    "id": "irritated",
+    "word": "irritated",
+    "family": "anger",
+    "hue": "#c97b6b",
+    "parentId": "anger",
+    "definition": "A sharp, surface-level friction — small things catching on you.",
+    "examples": [
+      "a sound that won't stop",
+      "being interrupted for the third time",
+      "a tag that scratches your neck"
+    ]
+  },
+  {
+    "id": "furious",
+    "word": "furious",
+    "family": "anger",
+    "hue": "#a85641",
+    "parentId": "anger",
+    "definition": "A hot, surging anger — something feels deeply unfair.",
+    "examples": [
+      "watching someone be treated badly",
+      "finding out you were lied to",
+      "a decision made behind your back"
+    ]
+  },
+  {
+    "id": "resentful",
+    "word": "resentful",
+    "family": "anger",
+    "hue": "#b06a5a",
+    "parentId": "anger",
+    "definition": "A slow-burning anger at a wrong that still stings.",
+    "examples": [
+      "always being the one who adjusts",
+      "a thank-you that never came",
+      "watching someone else get away with it"
+    ]
+  },
+  {
+    "id": "anxious",
+    "word": "anxious",
+    "family": "fear",
+    "hue": "#8f83bd",
+    "parentId": "fear",
+    "definition": "A restless worry about what might happen — body braced, mind circling.",
+    "examples": [
+      "checking your phone before it buzzes",
+      "a message that says we need to talk",
+      "lying awake rehearsing tomorrow"
+    ]
+  },
+  {
+    "id": "uneasy",
+    "word": "uneasy",
+    "family": "fear",
+    "hue": "#a49ac9",
+    "parentId": "fear",
+    "definition": "A quiet sense that something is off — not danger yet, just unsettled.",
+    "examples": [
+      "a room that goes quiet when you walk in",
+      "a familiar place that looks different",
+      "a gut feeling you can't explain"
+    ]
+  },
+  {
+    "id": "dread",
+    "word": "dread",
+    "family": "fear",
+    "hue": "#6f628f",
+    "parentId": "fear",
+    "definition": "A heavy anticipation of something bad — the feeling before the fall.",
+    "examples": [
+      "a meeting on the calendar you can't avoid",
+      "the moment before opening bad news",
+      "counting down to something difficult"
+    ]
+  },
+  {
+    "id": "peaceful",
+    "word": "peaceful",
+    "family": "calm",
+    "hue": "#8fae9a",
+    "parentId": "calm",
+    "definition": "A wide, unhurried calm — nothing pulling at you.",
+    "examples": [
+      "a quiet walk with no destination",
+      "the hour after everyone else falls asleep",
+      "waking up before your alarm, rested"
+    ]
+  },
+  {
+    "id": "grounded",
+    "word": "grounded",
+    "family": "calm",
+    "hue": "#75987f",
+    "parentId": "calm",
+    "definition": "A steady, rooted presence — you know where you are.",
+    "examples": [
+      "feet on the floor, slow breath",
+      "finishing something hard and staying with it",
+      "a conversation where you felt fully there"
+    ]
+  },
+  {
+    "id": "relieved",
+    "word": "relieved",
+    "family": "calm",
+    "hue": "#a8c2ad",
+    "parentId": "calm",
+    "definition": "The body letting go after a strain — the long breath after holding it.",
+    "examples": [
+      "hearing the test went fine",
+      "the moment a deadline passes",
+      "finding the thing you thought you lost"
+    ]
+  },
+  {
+    "id": "overwhelmed",
+    "word": "overwhelmed",
+    "family": "fear",
+    "hue": "#7c6fa8",
+    "parentId": "anxious",
+    "definition": "Too much at once — more than your hands can hold.",
+    "examples": [
+      "three deadlines on the same day",
+      "a room that gets louder",
+      "too many people needing you"
+    ]
+  },
+  {
+    "id": "restless",
+    "word": "restless",
+    "family": "fear",
+    "hue": "#b0a6d0",
+    "parentId": "anxious",
+    "definition": "A body that won't settle — always reaching for the next thing.",
+    "examples": [
+      "checking your phone every minute",
+      "pacing without noticing",
+      "lying down but not relaxing"
+    ]
+  },
+  {
+    "id": "isolated",
+    "word": "isolated",
+    "family": "sadness",
+    "hue": "#5f6f8c",
+    "parentId": "lonely",
+    "definition": "Apart in a way that feels permanent — like the bridge is gone.",
+    "examples": [
+      "the group chat that moved on without you",
+      "a weekend with no calls",
+      "being far from everyone you know"
+    ]
+  },
+  {
+    "id": "unseen",
+    "word": "unseen",
+    "family": "sadness",
+    "hue": "#7d8ca6",
+    "parentId": "lonely",
+    "definition": "Present but not noticed — like background.",
+    "examples": [
+      "being introduced and immediately forgotten",
+      "a message that never gets a reply",
+      "sitting in a room where no one asks"
+    ]
+  },
+  {
+    "id": "impatient",
+    "word": "impatient",
+    "family": "anger",
+    "hue": "#d18a6f",
+    "parentId": "irritated",
+    "definition": "A hurry with no room — waiting feels like friction.",
+    "examples": [
+      "a queue that won't move",
+      "waiting for a reply you need now",
+      "a slow app on a fast day"
+    ]
+  },
+  {
+    "id": "serene",
+    "word": "serene",
+    "family": "calm",
+    "hue": "#9fbfa9",
+    "parentId": "peaceful",
+    "definition": "A deep, unbothered calm — clear water.",
+    "examples": [
+      "a long exhale after a hard week",
+      "sitting somewhere quiet and green",
+      "nothing left on your list"
+    ]
   }
 ]

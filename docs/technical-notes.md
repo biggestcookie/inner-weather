@@ -7,9 +7,9 @@
 
 ## Status
 
-`d3-force` and `anime.js` are described below as required for drift / focus / bloom mechanics but are **not yet installed**. They are listed as planned dependencies in `AGENTS.md` and should be added (via `bun add`) when those features are implemented.
+`d3-force` and `anime.js` are installed and drive the map's drift and focus (see Interaction & animation layer): words drift with collision avoidance, and tapping one stills the drift while the camera pans it to center.
 
-The Logbook storage helpers are implemented — the `logbook` database via `idb`, in `app/utils/recordedEmotions.ts`. The keep flow and the entry page are implemented: _keep this feeling_ in the emotion card saves the moment and opens `/logbook/[id]`, where the moment and an optional note (autosaved on blur/debounce) can be edited and the feeling can be _let go_. The Logbook shows the month's kept feelings as family-colored dots, and the selected day's rows (emotion, time, one line of the note) reopen their entry page. The emotion types and sample vocabulary (`app/types/`, `app/assets/data/emotions.json`) are in place.
+The Logbook storage helpers are implemented — the `logbook` database via `idb`, in `app/utils/recordedEmotions.ts`. The keep flow and the entry page are implemented: _keep this feeling_ in the emotion card saves the moment and opens `/logbook/[id]`, where the moment and an optional note (autosaved on blur/debounce) can be edited and the feeling can be _let go_. The Logbook shows the month's kept feelings as family-colored dots, and the selected day's rows (emotion, time, one line of the note) reopen their entry page. The map runs the drift and the selection web over a wheel-shaped sample vocabulary of 29 words (`app/types/`, `app/assets/data/emotions.json`).
 
 The responsive shell (mobile-first two-pane layouts) is scaffolded: the emotion card and the Logbook day panel render their quiet empty states until the drift mechanics and the Logbook rows give them content.
 
@@ -33,8 +33,9 @@ Every screen is designed at phone width first and widens into side-by-side panes
 
 ## Interaction & animation layer
 
-- **Physics / layout (planned):** `d3-force`. Used strictly for calculating node repulsion and drifting coordinates so DOM elements never overlap.
-- **Animation / easing (planned):** `anime.js` v4. Handles smooth camera/viewport panning, spring physics, and soft fade-ins for text reveals.
+- **Physics / layout:** `d3-force`. Used strictly for calculating node repulsion and drifting coordinates so DOM elements never overlap. A small standing `alpha` keeps the drift alive; a per-tick clamp keeps words inside the canvas.
+- **Animation / easing:** `anime.js` v4. Pans the camera (a `translate` on the world layer) and moves the selection web. `prefers-reduced-motion: reduce` stops the ambient drift and places everything instantly instead of animating.
+- **The web (selection):** the map starts with the wheel's core words. Selecting one pauses the drift and slips it just outside the cloud; its related words — its parent and its next ring — are joined to it by faint lines, and the next ring appears in an outward arc around it, while the cloud only shuffles a little (≤12px). Edge words keep the line up to their parent. Webs you walked in through stay visible, fading a step for each selection back (the last six words are kept). Selecting a related word keeps the web in place: only the center (camera) and the revealed ring change, and a core word that was out slips back into the cloud. Tapping the anchor, empty space, or the card's close button releases the selection, clears the trail, and resumes the drift.
 
 ## Data model
 
@@ -54,9 +55,11 @@ interface Emotion {
   hue: string          // CSS color for the family; sub-emotions vary only in lightness
   definition: string   // short, plain language
   examples: string[]   // "it might show up as" — everyday situations
-  relatedIds: string[] // ids of nearby/similar emotions
+  parentId?: string    // the previous ring of the wheel; omitted for the core words
 }
 ```
+
+**Wheel structure:** the vocabulary is a feelings wheel — `parentId` links each word to the ring above it. Core words have no parent; their children are the second ring; their children are the third. `app/utils/emotions.ts` exposes `getCoreEmotions()`, `getChildEmotions(id)` (a word's next ring), `getRelatedEmotions(id)` (its parent and children — the wheel's links), and `getVisibleEmotions(selectedId)` (the core, the selected word's family, and its next ring). The map renders only that visible set — the simple words first, the next ring revealed on selection.
 
 **Color rule:** `hue` is assigned per family and inherited by sub-emotions as lightness variations only. This keeps the Logbook calendar readable — at most 4–5 hues ever appear as dots — and keeps map, explorer, and Logbook speaking one color language.
 
@@ -78,7 +81,7 @@ interface RecordedEmotion {
 
 ### Content reference (vocabulary expansion)
 
-The full word list will be derived from an existing feelings wheel — see the shortlist in the dev log / next step — using it for **word lists and grouping only**. Wheel *images* are copyrighted (and the common MentalHealth.AE recreation is CC BY-NC-ND — no derivatives), so all definitions, examples, and `relatedIds` links are written fresh in `emotions.json`, with the wheel credited in the README.
+The full word list will be derived from an existing feelings wheel — see the shortlist in the dev log / next step — using it for **word lists and grouping only**. Wheel *images* are copyrighted (and the common MentalHealth.AE recreation is CC BY-NC-ND — no derivatives), so all definitions, examples, and parent links are written fresh in `emotions.json`, with the wheel credited in the README.
 
 ## Routing & screens
 
@@ -94,5 +97,5 @@ The app is served from the domain root (`baseURL: "/"`).
 
 - **Hybrid rendering approach:** the background should be a fluid, atmospheric visual (CSS radial mesh / blur filters), while the text nodes _must_ remain absolute-positioned standard HTML DOM elements. This ensures crisp fonts, reliable touch targets, and accessibility.
 - **UI constraint:** do not introduce heavy component libraries (Vuetify, HeadlessUI, etc). Keep the DOM light to maintain performance on mobile and preserve the artsy, organic aesthetic.
-- **State management:** track the single "active/centered" node. Dynamically render only the parent, the active node, and its immediate sub-nodes to keep the DOM uncluttered and the physics simulation performant. The Logbook and entry page live outside the physics canvas entirely.
+- **State management:** track the single "active/centered" node. The map renders only the visible set — the wheel's core words, the selected word's family (ancestors and siblings), and its next ring — so the DOM and the physics stay light. The Logbook and entry page live outside the physics canvas entirely.
 - **Copy is design:** definitions, examples, and placeholder text follow the vocabulary rules in `docs/product-vision.md` ("keep", "let this one go", invitational phrasing). No streaks, scores, reminders, or other gamification in the UI.

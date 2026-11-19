@@ -16,17 +16,12 @@ Concise developer-facing summary for contributors and automation. This file inte
 - UI: `@nuxt/ui` + Tailwind CSS (typography, simple UI, absolute positioning). Custom scoped CSS for atmospheric gradients and animations.
 - PWA: `@vite-pwa/nuxt` (service worker for app shell, web manifest for install metadata)
 - Utilities: `@vueuse/nuxt` (useMouse, useTouch, useWindowSize, etc.)
+- Physics: `d3-force` (node drift and collision avoidance on the map)
+- Animation: `anime.js` v4 (camera pan on focus)
 - Package manager: bun
 - Node: Recommended >=22
 - Dev scripts (package.json): `dev` (`bun run dev`), `build` (`bun run build`), `preview` (`bun run preview`), `lint`, `typecheck`
 - Linters/formatters: ESLint, Prettier
-
-### Planned but not yet installed
-
-- `d3-force` — physics/layout for node drift (repulsion so DOM nodes never overlap)
-- `anime.js` v4 — animation/easing for tap-to-pan camera movement and soft fade-ins
-
-These are required by the architecture in `docs/technical-notes.md` and should be added when implementing drift / focus / bloom mechanics.
 
 ## Storage & PWA
 
@@ -58,7 +53,7 @@ These are required by the architecture in `docs/technical-notes.md` and should b
 
 - Web manifest & PWA icons: `public/`
 - Storage helpers: `app/utils/recordedEmotions.ts` (IndexedDB `logbook` database via `idb`). Service worker registration: `@vite-pwa/nuxt`
-- Atmosphere + node physics: search under `app/` for the canvas/background component and the d3-force / anime.js integration once added
+- Atmosphere + node physics: `app/pages/index.vue` runs the d3-force drift, the anime.js camera pan, and the selection web; atmospheric gradients live in each page's scoped `style` block
 
 # Maintenance
 

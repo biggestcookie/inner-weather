@@ -10,10 +10,15 @@ const props = defineProps<{
   emotion: Emotion | null;
 }>();
 
+const emit = defineEmits<{
+  /** A nearby feeling was tapped — the map refocuses its web on it. */
+  select: [id: string];
+  /** The description is done for now — hide the card, keep the web. */
+  close: [];
+}>();
+
 const nearby = computed<Emotion[]>(() =>
-  (props.emotion?.relatedIds ?? [])
-    .map((id) => getEmotionById(id))
-    .filter((emotion): emotion is Emotion => emotion !== undefined)
+  props.emotion ? getRelatedEmotions(props.emotion.id) : []
 );
 
 const keeping = ref(false);
@@ -33,6 +38,15 @@ async function keep() {
 <template>
   <article class="card">
     <template v-if="emotion">
+      <button
+        class="card__close"
+        type="button"
+        aria-label="close"
+        @click="emit('close')"
+      >
+        <UIcon name="i-lucide-x" />
+      </button>
+
       <p class="card__family">{{ emotion.family }}</p>
 
       <h2 class="card__word" :style="{ color: emotion.hue }">
@@ -44,10 +58,16 @@ async function keep() {
       <div v-if="nearby.length" class="card__nearby">
         <p class="card__label">nearby feelings</p>
 
-        <!-- Soft-swapping to a nearby feeling arrives with the bloom mechanics. -->
+        <!-- Nearby feelings refocus the map's web on tap. -->
         <ul class="card__chips">
-          <li v-for="other in nearby" :key="other.id" class="card__chip">
-            {{ other.word }}
+          <li v-for="other in nearby" :key="other.id">
+            <button
+              class="card__chip"
+              type="button"
+              @click="emit('select', other.id)"
+            >
+              {{ other.word }}
+            </button>
           </li>
         </ul>
       </div>
@@ -71,6 +91,7 @@ async function keep() {
 
 <style scoped>
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -80,6 +101,32 @@ async function keep() {
   border-radius: 1.25rem;
   box-shadow: 0 12px 32px rgba(51, 65, 85, 0.12);
   backdrop-filter: blur(12px);
+}
+
+.card__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  color: rgba(51, 65, 85, 0.5);
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.card__close:hover {
+  color: rgba(51, 65, 85, 0.8);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.card__family {
+  padding-right: 1.75rem;
 }
 
 .card__family,
@@ -116,10 +163,18 @@ async function keep() {
 
 .card__chip {
   padding: 0.35rem 0.75rem;
+  font: inherit;
   font-size: 0.85rem;
   color: rgba(51, 65, 85, 0.75);
   background: rgba(255, 255, 255, 0.7);
+  border: 0;
   border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card__chip:hover {
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .card__keep {

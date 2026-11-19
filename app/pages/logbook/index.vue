@@ -44,7 +44,9 @@ const days = computed(() => {
 /** Local calendar key — a day is named the way it was lived, not in UTC. */
 function dayKey(date: Date): string {
   const pad = (part: number) => String(part).padStart(2, "0");
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(
+    date.getDate()
+  )}`;
 }
 
 /** Kept feelings grouped by the local day they happened. */
@@ -206,10 +208,7 @@ function isToday(day: number): boolean {
         <li v-for="record in selectedRecords" :key="record.id">
           <NuxtLink :to="`/logbook/${record.id}`" class="logbook__row">
             <span class="logbook__row-line">
-              <span
-                class="logbook__row-word"
-                :style="{ color: hueOf(record) }"
-              >
+              <span class="logbook__row-word" :style="{ color: hueOf(record) }">
                 {{ wordOf(record) }}
               </span>
               <span class="logbook__row-time">{{ timeOf(record) }}</span>

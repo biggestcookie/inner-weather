@@ -43,17 +43,26 @@
       sky of its own
 - [x] The day panel's quiet copy for empty days
 
-## Step 4 — the drift & the focus
+## Step 4 — the drift & the focus ✅
 
-- [ ] Add `d3-force` and `anime.js` (see `AGENTS.md` — planned dependencies)
-- [ ] The drift: DOM text nodes float and avoid collisions via light physics
-- [ ] The focus: tapping a word pans the camera to center it, the bloom opens
+- [x] Add `d3-force` and `anime.js` (see `AGENTS.md` — planned dependencies)
+- [x] The drift: DOM text nodes float and avoid collisions via light physics
+- [x] The focus: tapping a word pans the camera to center it and opens its card
 
-## Step 5 — the bloom & the explorer
+## Step 5 — the web & the explorer 🔄
 
-- [ ] The bloom: related sub-emotions and definitions soft-fade into the space
-      around a focused word
-- [ ] Nearby feelings soft-swap the peek from word to word
+- [x] The map starts with the wheel's core words; selecting one pulls it just
+      outside the cloud and reveals its related words (the next ring) in an
+      outward arc around it, while the cloud only shuffles a little
+- [x] The web is the faint lines from the selected word to its parent and its
+      next ring — edge words keep their connection
+- [x] Previous webs stay visible, fading a step per selection back; the trail
+      clears on deselect
+- [x] Selecting a related word keeps the web in place — only the center
+      (camera) and the revealed ring change
+- [x] Tap the anchor, empty space, or the card's close button → deselect, back
+      to drift
+- [x] Tap any other word → it becomes the next anchor immediately
 - [ ] _read more_ — the peek expands to full screen (examples, full definition),
       with _keep_ still available
 - [ ] The share button — a hotlink to `/?emotion=<id>`, `navigator.share` with a
@@ -63,7 +72,8 @@
 
 - [ ] Choose the feelings wheel shortlist (word lists and grouping only —
       credited in the README; all writing stays ours)
-- [ ] Expand `emotions.json` to the full vocabulary: 3–5 families with
-      sub-emotions, definitions, examples, related ids, family hues
+- [x] Expand `emotions.json` to a wheel-shaped sample (29 words: 5 core, 18 in
+      the second ring, 6 in the third; words, definitions, and parent links are
+      yours to refine)
 - [ ] The copy pass: definitions, examples, and placeholder text — this is
       design work, not filler

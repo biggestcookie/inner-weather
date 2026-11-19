@@ -16,6 +16,9 @@ export interface Emotion {
   definition: string;
   /** "It might show up as" — everyday situations. */
   examples: string[];
-  /** Ids of nearby/similar emotions, for the bloom and explorer. */
-  relatedIds: string[];
+  /**
+   * The word this one belongs under — the previous ring of the feelings wheel.
+   * Omitted for the simple core words the map starts with.
+   */
+  parentId?: string;
 }

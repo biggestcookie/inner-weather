@@ -28,7 +28,7 @@ const emotion = computed<Emotion | undefined>(() =>
 const placeholders = [
   "What else was in the air today?",
   "anything you'd like to remember about this moment?",
-  "a few words, whenever you're ready — or none at all."
+  "a few words, whenever you're ready — or none at all.",
 ];
 const placeholder =
   placeholders[Math.floor(Math.random() * placeholders.length)];
