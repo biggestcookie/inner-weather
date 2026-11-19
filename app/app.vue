@@ -1,6 +1,8 @@
 <script setup lang="ts">
+const baseURL = useRuntimeConfig().app.baseURL;
+
 useHead({
-  link: [{ rel: "icon", href: "/favicon.ico" }],
+  link: [{ rel: "icon", href: `${baseURL}favicon.ico` }],
   htmlAttrs: {
     lang: "en",
   },

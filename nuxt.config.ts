@@ -1,5 +1,9 @@
 import { defineNuxtConfig } from "nuxt/config";
 
+// GitHub Pages serves the app under /inner-weather/; dev stays at the root.
+const baseURL =
+  process.env.NODE_ENV === "production" ? "/inner-weather/" : "/";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
@@ -16,7 +20,7 @@ export default defineNuxtConfig({
     enabled: true,
   },
   app: {
-    baseURL: "/",
+    baseURL,
     head: {
       title: "inner-weather",
       meta: [
@@ -100,8 +104,8 @@ export default defineNuxtConfig({
   pwa: {
     registerType: "autoUpdate",
 
-    scope: "/",
-    base: "/",
+    scope: baseURL,
+    base: baseURL,
 
     manifest: {
       name: "inner-weather",
@@ -111,7 +115,7 @@ export default defineNuxtConfig({
       theme_color: "#faf7f2",
       background_color: "#faf7f2",
       display: "standalone",
-      start_url: "/",
+      start_url: baseURL,
       icons: [],
     },
 
