@@ -1,9 +1,10 @@
 name: "Web Deploy"
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - __workflow_disabled__
+      - main
 
 permissions:
   contents: read
