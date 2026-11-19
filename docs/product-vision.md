@@ -72,7 +72,7 @@ Each core feeling family owns one hue drawn from the atmosphere's palette; sub-e
 
 ## Action items for the dev cycle
 
-1. **Data schema:** done in sample form (`app/assets/data/emotions.json`); expand to the full vocabulary — 3–5 core families with sub-emotions, definitions, examples, related ids, family hues — drawing the word list from an existing feelings wheel (credited) with our own writing throughout.
+1. **Data schema:** done (`app/assets/data/emotions.json`) — 103 words in 6 core families with sub-emotions, definitions, examples, parent links, and family hues, drawing the word list from published feelings wheels (credited in the README) with our own writing throughout. See `docs/emotion-vocabulary.md`.
 2. **The canvas:** scaffold the Nuxt app and create the basic full-screen atmospheric CSS gradient background.
 3. **The physics:** implement d3-force with dummy divs to dial in the repulsion and drift speeds.
 4. **The interactions:** wire up anime.js and VueUse to handle the tap-to-pan camera movement.

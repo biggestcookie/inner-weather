@@ -9,7 +9,7 @@
 
 `d3-force` and `anime.js` are installed and drive the map's drift and focus (see Interaction & animation layer): words drift with collision avoidance, and tapping one stills the drift while the camera pans it to center.
 
-The Logbook storage helpers are implemented — the `logbook` database via `idb`, in `app/utils/recordedEmotions.ts`. The keep flow and the entry page are implemented: _keep this feeling_ in the emotion card saves the moment and opens `/logbook/[id]`, where the moment and an optional note (autosaved on blur/debounce) can be edited and the feeling can be _let go_. The Logbook shows the month's kept feelings as family-colored dots, and the selected day's rows (emotion, time, one line of the note) reopen their entry page. The map runs the drift and the selection web over a wheel-shaped sample vocabulary of 29 words (`app/types/`, `app/assets/data/emotions.json`).
+The Logbook storage helpers are implemented — the `logbook` database via `idb`, in `app/utils/recordedEmotions.ts`. The keep flow and the entry page are implemented: _keep this feeling_ in the emotion card saves the moment and opens `/logbook/[id]`, where the moment and an optional note (autosaved on blur/debounce) can be edited and the feeling can be _let go_. The Logbook shows the month's kept feelings as family-colored dots, and the selected day's rows (emotion, time, one line of the note) reopen their entry page. The map runs the drift and the selection web over a wheel-shaped vocabulary of 103 words (`app/types/`, `app/assets/data/emotions.json`).
 
 The responsive shell (mobile-first two-pane layouts) is scaffolded: the emotion card and the Logbook day panel render their quiet empty states until the drift mechanics and the Logbook rows give them content.
 
@@ -43,7 +43,7 @@ Naming: code and data names stay agnostic and descriptive — `Emotion`, `Record
 
 ### Emotions
 
-The vocabulary lives in `app/assets/data/emotions.json`, a hand-editable JSON file (sample content only for now), exposed typed via `app/utils/emotions.ts` (`emotions`, `getEmotionById()`).
+The vocabulary lives in `app/assets/data/emotions.json`, a hand-editable JSON file (103 words — 6 core, 30 clusters, 67 precise words), exposed typed via `app/utils/emotions.ts` (`emotions`, `getEmotionById()`). Sources, structure, and the rules for adding words are in `docs/emotion-vocabulary.md`.
 
 Each emotion carries metadata beyond its word:
 
@@ -51,7 +51,7 @@ Each emotion carries metadata beyond its word:
 interface Emotion {
   id: string
   word: string
-  family: string       // core feeling (3–5 families total)
+  family: string       // core feeling — one of six families
   hue: string          // CSS color for the family; sub-emotions vary only in lightness
   definition: string   // short, plain language
   examples: string[]   // "it might show up as" — everyday situations
@@ -61,7 +61,7 @@ interface Emotion {
 
 **Wheel structure:** the vocabulary is a feelings wheel — `parentId` links each word to the ring above it. Core words have no parent; their children are the second ring; their children are the third. `app/utils/emotions.ts` exposes `getCoreEmotions()`, `getChildEmotions(id)` (a word's next ring), `getRelatedEmotions(id)` (its parent and children — the wheel's links), and `getVisibleEmotions(selectedId)` (the core, the selected word's family, and its next ring). The map renders only that visible set — the simple words first, the next ring revealed on selection.
 
-**Color rule:** `hue` is assigned per family and inherited by sub-emotions as lightness variations only. This keeps the Logbook calendar readable — at most 4–5 hues ever appear as dots — and keeps map, explorer, and Logbook speaking one color language.
+**Color rule:** `hue` is assigned per family and inherited by sub-emotions as lightness variations only. This keeps the Logbook calendar readable — at most six hues ever appear as dots — and keeps map, explorer, and Logbook speaking one color language.
 
 ### Recorded emotions (IndexedDB)
 
@@ -81,7 +81,7 @@ interface RecordedEmotion {
 
 ### Content reference (vocabulary expansion)
 
-The full word list will be derived from an existing feelings wheel — see the shortlist in the dev log / next step — using it for **word lists and grouping only**. Wheel *images* are copyrighted (and the common MentalHealth.AE recreation is CC BY-NC-ND — no derivatives), so all definitions, examples, and parent links are written fresh in `emotions.json`, with the wheel credited in the README.
+The word list is derived from published feelings wheels — Willcox's Feeling Wheel (1982), Plutchik (1980), and Williams' Emotion Sensation Feeling Wheel — using them for **word lists and grouping only**. Wheel *images* are copyrighted (and the common MentalHealth.AE recreation is CC BY-NC-ND — no derivatives), so all definitions, examples, hues, and parent links are written fresh in `emotions.json`, with the sources credited in the README. The full mapping and the deliberate deviations are in `docs/emotion-vocabulary.md`.
 
 ## Routing & screens
 

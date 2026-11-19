@@ -70,10 +70,14 @@
 
 ## Step 6 — the vocabulary & the copy
 
-- [ ] Choose the feelings wheel shortlist (word lists and grouping only —
-      credited in the README; all writing stays ours)
-- [x] Expand `emotions.json` to a wheel-shaped sample (29 words: 5 core, 18 in
-      the second ring, 6 in the third; words, definitions, and parent links are
-      yours to refine)
+- [x] Choose the feelings wheel shortlist (word lists and grouping only —
+      credited in the README; all writing stays ours): Willcox 1982, Plutchik
+      1980, Williams' Emotion Sensation wheel, Rosenberg's NVC inventory — see
+      `docs/emotion-vocabulary.md`
+- [x] Expand `emotions.json` to a full wheel (103 words: 6 core, 30 clusters,
+      67 precise words; every id from the 29-word sample preserved)
+- [ ] The copy pass: read definitions and examples outward — core → cluster →
+      precise word — and rewrite any that repeat a sibling instead of
+      sharpening it. New copy is provisional until this pass.
 - [ ] The copy pass: definitions, examples, and placeholder text — this is
       design work, not filler

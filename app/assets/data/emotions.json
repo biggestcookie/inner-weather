@@ -60,6 +60,18 @@
     ]
   },
   {
+    "id": "powerful",
+    "word": "powerful",
+    "family": "powerful",
+    "hue": "#b57e91",
+    "definition": "A sense of your own weight — you can act, and it will count.",
+    "examples": [
+      "the room going quiet when you speak",
+      "moving something heavy on your own",
+      "saying the thing everyone was avoiding"
+    ]
+  },
+  {
     "id": "content",
     "word": "content",
     "family": "joy",
@@ -70,6 +82,32 @@
       "a slow morning with nowhere to be",
       "the first sip of something warm",
       "sitting with a friend in comfortable silence"
+    ]
+  },
+  {
+    "id": "satisfied",
+    "word": "satisfied",
+    "family": "joy",
+    "hue": "#d9a468",
+    "parentId": "content",
+    "definition": "A need was met and the reaching stopped — pleasant, not thrilling.",
+    "examples": [
+      "the last box finally unpacked",
+      "a full plate and nothing else on the list",
+      "the tool finally working the way it should"
+    ]
+  },
+  {
+    "id": "fulfilled",
+    "word": "fulfilled",
+    "family": "joy",
+    "hue": "#bf823d",
+    "parentId": "content",
+    "definition": "A deeper settledness — what you spent yourself on actually mattered.",
+    "examples": [
+      "a week of work that felt like yours",
+      "watching someone you taught finally get it",
+      "keeping a promise you made to yourself"
     ]
   },
   {
@@ -86,6 +124,32 @@
     ]
   },
   {
+    "id": "amused",
+    "word": "amused",
+    "family": "joy",
+    "hue": "#f2cf9d",
+    "parentId": "delight",
+    "definition": "A small, light tickle of fun — the corners of your mouth go up before you decide.",
+    "examples": [
+      "a typo that makes a serious email funny",
+      "your cat missing a jump and pretending it didn't",
+      "a friend's terrible joke landing anyway"
+    ]
+  },
+  {
+    "id": "enchanted",
+    "word": "enchanted",
+    "family": "joy",
+    "hue": "#cfa06c",
+    "parentId": "delight",
+    "definition": "Drawn in and quietly wonderstruck — something lovely is holding your attention.",
+    "examples": [
+      "a shop window full of tiny brass clocks",
+      "a song with a part you keep rewinding",
+      "a street that looks made of lamplight"
+    ]
+  },
+  {
     "id": "gratitude",
     "word": "gratitude",
     "family": "joy",
@@ -96,6 +160,32 @@
       "a friend checking in at exactly the right moment",
       "noticing someone remembered something small you said",
       "a quiet thank-you that really lands"
+    ]
+  },
+  {
+    "id": "appreciative",
+    "word": "appreciative",
+    "family": "joy",
+    "hue": "#b9782f",
+    "parentId": "gratitude",
+    "definition": "A plain, warm thankfulness — you noticed what someone did for you.",
+    "examples": [
+      "someone holding the door when your hands are full",
+      "a colleague covering for you without being asked",
+      "the person who made the coffee this morning"
+    ]
+  },
+  {
+    "id": "moved",
+    "word": "moved",
+    "family": "joy",
+    "hue": "#e2b184",
+    "parentId": "gratitude",
+    "definition": "Touched past words — something reached in and your eyes went warm.",
+    "examples": [
+      "a stranger's kindness you didn't expect",
+      "a speech that made the whole room go quiet",
+      "an old photo of your parents when they were young"
     ]
   },
   {
@@ -112,6 +202,32 @@
     ]
   },
   {
+    "id": "mischievous",
+    "word": "mischievous",
+    "family": "joy",
+    "hue": "#e5ae70",
+    "parentId": "playful",
+    "definition": "A gleam of trouble — harmless, and you both know it.",
+    "examples": [
+      "hiding a friend's phone for thirty seconds",
+      "a note left where only one person will find it",
+      "swapping the salt and sugar as a joke"
+    ]
+  },
+  {
+    "id": "silly",
+    "word": "silly",
+    "family": "joy",
+    "hue": "#f0c894",
+    "parentId": "playful",
+    "definition": "Deliberately undignified, and glad about it.",
+    "examples": [
+      "dancing badly in the kitchen",
+      "a voice for the dog that the dog believes",
+      "sending a voice note that's mostly laughing"
+    ]
+  },
+  {
     "id": "hopeful",
     "word": "hopeful",
     "family": "joy",
@@ -122,6 +238,110 @@
       "a reply that says let's talk",
       "the first warm day of the year",
       "applying for something you actually want"
+    ]
+  },
+  {
+    "id": "optimistic",
+    "word": "optimistic",
+    "family": "joy",
+    "hue": "#eabf83",
+    "parentId": "hopeful",
+    "definition": "A steady expectation that it will work out — lighter than hope, more certain than wishing.",
+    "examples": [
+      "a plan that has actually been thought through",
+      "the weather turning for the weekend",
+      "a first day that starts on time"
+    ]
+  },
+  {
+    "id": "inspired",
+    "word": "inspired",
+    "family": "joy",
+    "hue": "#d4935b",
+    "parentId": "hopeful",
+    "definition": "A jolt of wanting to make something — ideas arriving faster than you can hold them.",
+    "examples": [
+      "a walk that ends with three pages of notes",
+      "hearing someone talk about work they love",
+      "the light at six on a clear evening"
+    ]
+  },
+  {
+    "id": "proud",
+    "word": "proud",
+    "family": "powerful",
+    "hue": "#b57e91",
+    "parentId": "powerful",
+    "definition": "A straight-backed gladness about what you did or who you are.",
+    "examples": [
+      "someone asking about the thing you built",
+      "finishing a hard conversation without shrinking",
+      "your kid doing something brave"
+    ]
+  },
+  {
+    "id": "confident",
+    "word": "confident",
+    "family": "powerful",
+    "hue": "#a87386",
+    "parentId": "proud",
+    "definition": "A quiet certainty in your own footing — you can do this.",
+    "examples": [
+      "walking into a room where you know your material",
+      "saying no without explaining twice",
+      "a task you've done a hundred times"
+    ]
+  },
+  {
+    "id": "accomplished",
+    "word": "accomplished",
+    "family": "powerful",
+    "hue": "#8f5f72",
+    "parentId": "proud",
+    "definition": "The clean feeling of a thing finished well.",
+    "examples": [
+      "submitting the last assignment",
+      "the room finally painted",
+      "a year of small habits holding"
+    ]
+  },
+  {
+    "id": "affectionate",
+    "word": "affectionate",
+    "family": "joy",
+    "hue": "#e3ab7e",
+    "parentId": "joy",
+    "definition": "A soft, warm pull toward someone — you want them close.",
+    "examples": [
+      "a hand on the back of someone's neck",
+      "texting just to say you thought of them",
+      "the smell of someone's coat"
+    ]
+  },
+  {
+    "id": "tender",
+    "word": "tender",
+    "family": "joy",
+    "hue": "#ecc3a0",
+    "parentId": "affectionate",
+    "definition": "Gentle with someone — careful in a way that comes from caring.",
+    "examples": [
+      "sitting with a friend who's crying",
+      "holding something small and breakable",
+      "speaking softly to someone who's tired"
+    ]
+  },
+  {
+    "id": "adoring",
+    "word": "adoring",
+    "family": "joy",
+    "hue": "#d89b6d",
+    "parentId": "affectionate",
+    "definition": "A full, unguarded delight in another person — you could look at them all day.",
+    "examples": [
+      "watching someone laugh at their own joke",
+      "a new parent staring at a sleeping baby",
+      "your person across a crowded room"
     ]
   },
   {
@@ -138,6 +358,32 @@
     ]
   },
   {
+    "id": "nostalgic",
+    "word": "nostalgic",
+    "family": "sadness",
+    "hue": "#93a3bf",
+    "parentId": "wistful",
+    "definition": "Warmth for a time that's gone — sweet, and a little out of reach.",
+    "examples": [
+      "an old photo of a kitchen you'd forgotten",
+      "a smell from your childhood street",
+      "the theme song of a show you loved"
+    ]
+  },
+  {
+    "id": "homesick",
+    "word": "homesick",
+    "family": "sadness",
+    "hue": "#7f90ad",
+    "parentId": "wistful",
+    "definition": "Missing the place or people that feel like home — the pull toward somewhere else.",
+    "examples": [
+      "a familiar accent in a strange city",
+      "your mother's cooking on a bad day",
+      "the first night in a new room"
+    ]
+  },
+  {
     "id": "grief",
     "word": "grief",
     "family": "sadness",
@@ -148,6 +394,32 @@
       "a chair that stays empty",
       "a tradition that no longer happens",
       "not being able to tell someone your news"
+    ]
+  },
+  {
+    "id": "heartbroken",
+    "word": "heartbroken",
+    "family": "sadness",
+    "hue": "#47607e",
+    "parentId": "grief",
+    "definition": "Grief with a sharp edge — something central came apart.",
+    "examples": [
+      "the first night in an empty flat",
+      "hearing the news and sitting down on the stairs",
+      "a photo you can't look at yet"
+    ]
+  },
+  {
+    "id": "mourning",
+    "word": "mourning",
+    "family": "sadness",
+    "hue": "#5a6f92",
+    "parentId": "grief",
+    "definition": "Grief made into ritual — you're carrying someone or something forward on purpose.",
+    "examples": [
+      "the anniversary you always mark",
+      "cooking their recipe on the day",
+      "keeping the chair where it was"
     ]
   },
   {
@@ -164,6 +436,45 @@
     ]
   },
   {
+    "id": "gloomy",
+    "word": "gloomy",
+    "family": "sadness",
+    "hue": "#6c7d97",
+    "parentId": "melancholy",
+    "definition": "A grey, settled low — the colour has gone out of things.",
+    "examples": [
+      "three days of rain and no plans",
+      "a room with the curtains still shut",
+      "news you can't do anything about"
+    ]
+  },
+  {
+    "id": "somber",
+    "word": "somber",
+    "family": "sadness",
+    "hue": "#57697f",
+    "parentId": "melancholy",
+    "definition": "A quiet gravity — the moment calls for stillness, not cheer.",
+    "examples": [
+      "a memorial service",
+      "reading an old letter from someone gone",
+      "the walk home after bad news"
+    ]
+  },
+  {
+    "id": "blue",
+    "word": "blue",
+    "family": "sadness",
+    "hue": "#8194b1",
+    "parentId": "melancholy",
+    "definition": "A mild, passing sadness — low without a reason you can name.",
+    "examples": [
+      "a Sunday evening with nothing planned",
+      "missing a place you can't go back to",
+      "a song that lands harder than it should"
+    ]
+  },
+  {
     "id": "lonely",
     "word": "lonely",
     "family": "sadness",
@@ -174,149 +485,6 @@
       "a full room where you feel like a spectator",
       "eating dinner with only your phone nearby",
       "a weekend that nobody asked about"
-    ]
-  },
-  {
-    "id": "irritated",
-    "word": "irritated",
-    "family": "anger",
-    "hue": "#c97b6b",
-    "parentId": "anger",
-    "definition": "A sharp, surface-level friction — small things catching on you.",
-    "examples": [
-      "a sound that won't stop",
-      "being interrupted for the third time",
-      "a tag that scratches your neck"
-    ]
-  },
-  {
-    "id": "furious",
-    "word": "furious",
-    "family": "anger",
-    "hue": "#a85641",
-    "parentId": "anger",
-    "definition": "A hot, surging anger — something feels deeply unfair.",
-    "examples": [
-      "watching someone be treated badly",
-      "finding out you were lied to",
-      "a decision made behind your back"
-    ]
-  },
-  {
-    "id": "resentful",
-    "word": "resentful",
-    "family": "anger",
-    "hue": "#b06a5a",
-    "parentId": "anger",
-    "definition": "A slow-burning anger at a wrong that still stings.",
-    "examples": [
-      "always being the one who adjusts",
-      "a thank-you that never came",
-      "watching someone else get away with it"
-    ]
-  },
-  {
-    "id": "anxious",
-    "word": "anxious",
-    "family": "fear",
-    "hue": "#8f83bd",
-    "parentId": "fear",
-    "definition": "A restless worry about what might happen — body braced, mind circling.",
-    "examples": [
-      "checking your phone before it buzzes",
-      "a message that says we need to talk",
-      "lying awake rehearsing tomorrow"
-    ]
-  },
-  {
-    "id": "uneasy",
-    "word": "uneasy",
-    "family": "fear",
-    "hue": "#a49ac9",
-    "parentId": "fear",
-    "definition": "A quiet sense that something is off — not danger yet, just unsettled.",
-    "examples": [
-      "a room that goes quiet when you walk in",
-      "a familiar place that looks different",
-      "a gut feeling you can't explain"
-    ]
-  },
-  {
-    "id": "dread",
-    "word": "dread",
-    "family": "fear",
-    "hue": "#6f628f",
-    "parentId": "fear",
-    "definition": "A heavy anticipation of something bad — the feeling before the fall.",
-    "examples": [
-      "a meeting on the calendar you can't avoid",
-      "the moment before opening bad news",
-      "counting down to something difficult"
-    ]
-  },
-  {
-    "id": "peaceful",
-    "word": "peaceful",
-    "family": "calm",
-    "hue": "#8fae9a",
-    "parentId": "calm",
-    "definition": "A wide, unhurried calm — nothing pulling at you.",
-    "examples": [
-      "a quiet walk with no destination",
-      "the hour after everyone else falls asleep",
-      "waking up before your alarm, rested"
-    ]
-  },
-  {
-    "id": "grounded",
-    "word": "grounded",
-    "family": "calm",
-    "hue": "#75987f",
-    "parentId": "calm",
-    "definition": "A steady, rooted presence — you know where you are.",
-    "examples": [
-      "feet on the floor, slow breath",
-      "finishing something hard and staying with it",
-      "a conversation where you felt fully there"
-    ]
-  },
-  {
-    "id": "relieved",
-    "word": "relieved",
-    "family": "calm",
-    "hue": "#a8c2ad",
-    "parentId": "calm",
-    "definition": "The body letting go after a strain — the long breath after holding it.",
-    "examples": [
-      "hearing the test went fine",
-      "the moment a deadline passes",
-      "finding the thing you thought you lost"
-    ]
-  },
-  {
-    "id": "overwhelmed",
-    "word": "overwhelmed",
-    "family": "fear",
-    "hue": "#7c6fa8",
-    "parentId": "anxious",
-    "definition": "Too much at once — more than your hands can hold.",
-    "examples": [
-      "three deadlines on the same day",
-      "a room that gets louder",
-      "too many people needing you"
-    ]
-  },
-  {
-    "id": "restless",
-    "word": "restless",
-    "family": "fear",
-    "hue": "#b0a6d0",
-    "parentId": "anxious",
-    "definition": "A body that won't settle — always reaching for the next thing.",
-    "examples": [
-      "checking your phone every minute",
-      "pacing without noticing",
-      "lying down but not relaxing"
     ]
   },
   {
@@ -346,6 +514,136 @@
     ]
   },
   {
+    "id": "abandoned",
+    "word": "abandoned",
+    "family": "sadness",
+    "hue": "#4e6188",
+    "parentId": "lonely",
+    "definition": "Left behind in a way that feels decided — someone chose to go.",
+    "examples": [
+      "a message read and never answered",
+      "being dropped from the plan without a word",
+      "standing at the pickup spot alone"
+    ]
+  },
+  {
+    "id": "hurt",
+    "word": "hurt",
+    "family": "sadness",
+    "hue": "#7486a4",
+    "parentId": "sadness",
+    "definition": "A bruise in the feeling — something landed where it shouldn't have.",
+    "examples": [
+      "a joke at your expense that got a laugh",
+      "being left out of something you'd have loved",
+      "hearing what they really think of you"
+    ]
+  },
+  {
+    "id": "disappointed",
+    "word": "disappointed",
+    "family": "sadness",
+    "hue": "#8596b2",
+    "parentId": "hurt",
+    "definition": "The drop after expecting something — the shape of what didn't happen.",
+    "examples": [
+      "the reply that never came",
+      "a plan cancelled twice",
+      "opening the box and finding it smaller than the photo"
+    ]
+  },
+  {
+    "id": "betrayed",
+    "word": "betrayed",
+    "family": "sadness",
+    "hue": "#68789a",
+    "parentId": "hurt",
+    "definition": "Hurt with a door closed in it — someone broke something you trusted.",
+    "examples": [
+      "being told a secret you shared",
+      "a friend taking the other side",
+      "finding out the story you were told wasn't true"
+    ]
+  },
+  {
+    "id": "rejected",
+    "word": "rejected",
+    "family": "sadness",
+    "hue": "#5a6c8e",
+    "parentId": "hurt",
+    "definition": "Turned away — you offered something and it wasn't taken.",
+    "examples": [
+      "the message after the interview",
+      "a hug that wasn't returned",
+      "being told not this time"
+    ]
+  },
+  {
+    "id": "ashamed",
+    "word": "ashamed",
+    "family": "sadness",
+    "hue": "#6e7a96",
+    "parentId": "sadness",
+    "definition": "A shrinking feeling about yourself — you want to be smaller, or elsewhere.",
+    "examples": [
+      "the thing you said that you can't stop replaying",
+      "being caught in a lie",
+      "your voice cracking in the meeting"
+    ]
+  },
+  {
+    "id": "guilty",
+    "word": "guilty",
+    "family": "sadness",
+    "hue": "#61708f",
+    "parentId": "ashamed",
+    "definition": "A weight about something you did — you know it landed on someone.",
+    "examples": [
+      "forgetting a birthday that mattered",
+      "snapping at someone who didn't deserve it",
+      "the promise you quietly let go"
+    ]
+  },
+  {
+    "id": "embarrassed",
+    "word": "embarrassed",
+    "family": "sadness",
+    "hue": "#9096b3",
+    "parentId": "ashamed",
+    "definition": "A hot, public flush — everyone saw.",
+    "examples": [
+      "tripping in front of a full room",
+      "your name called out for the wrong thing",
+      "the typo in the message to everyone"
+    ]
+  },
+  {
+    "id": "small",
+    "word": "small",
+    "family": "sadness",
+    "hue": "#5c6987",
+    "parentId": "ashamed",
+    "definition": "Diminished in your own eyes — like you take up less room than you did.",
+    "examples": [
+      "being introduced as someone's plus-one",
+      "the meeting where no one asked you",
+      "comparing your work to theirs"
+    ]
+  },
+  {
+    "id": "irritated",
+    "word": "irritated",
+    "family": "anger",
+    "hue": "#c97b6b",
+    "parentId": "anger",
+    "definition": "A sharp, surface-level friction — small things catching on you.",
+    "examples": [
+      "a sound that won't stop",
+      "being interrupted for the third time",
+      "a tag that scratches your neck"
+    ]
+  },
+  {
     "id": "impatient",
     "word": "impatient",
     "family": "anger",
@@ -359,6 +657,383 @@
     ]
   },
   {
+    "id": "annoyed",
+    "word": "annoyed",
+    "family": "anger",
+    "hue": "#cf8b74",
+    "parentId": "irritated",
+    "definition": "A low, repeated friction — something keeps tapping at you.",
+    "examples": [
+      "a neighbour's bass through the wall",
+      "the same question for the fourth time",
+      "a scratched screen you keep noticing"
+    ]
+  },
+  {
+    "id": "cranky",
+    "word": "cranky",
+    "family": "anger",
+    "hue": "#d89a86",
+    "parentId": "irritated",
+    "definition": "A grumpy, everything-is-too-much mood — small troubles, short fuse.",
+    "examples": [
+      "hungry and stuck in traffic",
+      "a bad night's sleep showing up all day",
+      "the printer jamming twice"
+    ]
+  },
+  {
+    "id": "furious",
+    "word": "furious",
+    "family": "anger",
+    "hue": "#a85641",
+    "parentId": "anger",
+    "definition": "A hot, surging anger — something feels deeply unfair.",
+    "examples": [
+      "watching someone be treated badly",
+      "finding out you were lied to",
+      "a decision made behind your back"
+    ]
+  },
+  {
+    "id": "enraged",
+    "word": "enraged",
+    "family": "anger",
+    "hue": "#8f3f2d",
+    "parentId": "furious",
+    "definition": "Anger at full volume — thinking gets narrow and fast.",
+    "examples": [
+      "watching someone be cruel to a child",
+      "the lie that finally came out",
+      "being pushed past the last inch"
+    ]
+  },
+  {
+    "id": "outraged",
+    "word": "outraged",
+    "family": "anger",
+    "hue": "#9c4836",
+    "parentId": "furious",
+    "definition": "Anger with a moral edge — something is wrong and should not stand.",
+    "examples": [
+      "a ruling that punishes the wrong person",
+      "a company quietly stealing from people",
+      "hearing how someone was treated"
+    ]
+  },
+  {
+    "id": "resentful",
+    "word": "resentful",
+    "family": "anger",
+    "hue": "#b06a5a",
+    "parentId": "anger",
+    "definition": "A slow-burning anger at a wrong that still stings.",
+    "examples": [
+      "always being the one who adjusts",
+      "a thank-you that never came",
+      "watching someone else get away with it"
+    ]
+  },
+  {
+    "id": "bitter",
+    "word": "bitter",
+    "family": "anger",
+    "hue": "#a05a44",
+    "parentId": "resentful",
+    "definition": "An old anger gone sour — it's been carried long enough to taste like this.",
+    "examples": [
+      "the promotion that went elsewhere",
+      "years of being the one who compromises",
+      "seeing them praised for your idea"
+    ]
+  },
+  {
+    "id": "envious",
+    "word": "envious",
+    "family": "anger",
+    "hue": "#b5745c",
+    "parentId": "resentful",
+    "definition": "The ache of wanting what someone else has — it curdles if you hold it.",
+    "examples": [
+      "their holiday photos in February",
+      "the friend whose work everyone shares",
+      "someone younger already there"
+    ]
+  },
+  {
+    "id": "frustrated",
+    "word": "frustrated",
+    "family": "anger",
+    "hue": "#c2765f",
+    "parentId": "anger",
+    "definition": "Blocked — effort keeps meeting a wall.",
+    "examples": [
+      "the form that loses your answers",
+      "explaining the same thing again",
+      "a door that won't sit in its frame"
+    ]
+  },
+  {
+    "id": "exasperated",
+    "word": "exasperated",
+    "family": "anger",
+    "hue": "#d4896f",
+    "parentId": "frustrated",
+    "definition": "Frustration worn thin — you're out of patience and almost out of words.",
+    "examples": [
+      "the fifth transfer to another department",
+      "a child who won't put shoes on",
+      "the same bug back after a fix"
+    ]
+  },
+  {
+    "id": "helpless",
+    "word": "helpless",
+    "family": "anger",
+    "hue": "#bb6152",
+    "parentId": "frustrated",
+    "definition": "Wanting to act and having nowhere to put it.",
+    "examples": [
+      "watching someone you love struggle",
+      "a diagnosis you can't argue with",
+      "the phone that won't stop ringing"
+    ]
+  },
+  {
+    "id": "anxious",
+    "word": "anxious",
+    "family": "fear",
+    "hue": "#8f83bd",
+    "parentId": "fear",
+    "definition": "A restless worry about what might happen — body braced, mind circling.",
+    "examples": [
+      "checking your phone before it buzzes",
+      "a message that says we need to talk",
+      "lying awake rehearsing tomorrow"
+    ]
+  },
+  {
+    "id": "overwhelmed",
+    "word": "overwhelmed",
+    "family": "fear",
+    "hue": "#7c6fa8",
+    "parentId": "anxious",
+    "definition": "Too much at once — more than your hands can hold.",
+    "examples": [
+      "three deadlines on the same day",
+      "a room that gets louder",
+      "too many people needing you"
+    ]
+  },
+  {
+    "id": "restless",
+    "word": "restless",
+    "family": "fear",
+    "hue": "#b0a6d0",
+    "parentId": "anxious",
+    "definition": "A body that won't settle — always reaching for the next thing.",
+    "examples": [
+      "checking your phone every minute",
+      "pacing without noticing",
+      "lying down but not relaxing"
+    ]
+  },
+  {
+    "id": "worried",
+    "word": "worried",
+    "family": "fear",
+    "hue": "#9b90c4",
+    "parentId": "anxious",
+    "definition": "A mind chewing on what might happen — specific, repeated, tiring.",
+    "examples": [
+      "rehearsing the conversation you haven't had",
+      "checking the balance twice a day",
+      "the cough that's probably nothing"
+    ]
+  },
+  {
+    "id": "uneasy",
+    "word": "uneasy",
+    "family": "fear",
+    "hue": "#a49ac9",
+    "parentId": "fear",
+    "definition": "A quiet sense that something is off — not danger yet, just unsettled.",
+    "examples": [
+      "a room that goes quiet when you walk in",
+      "a familiar place that looks different",
+      "a gut feeling you can't explain"
+    ]
+  },
+  {
+    "id": "suspicious",
+    "word": "suspicious",
+    "family": "fear",
+    "hue": "#8c81b8",
+    "parentId": "uneasy",
+    "definition": "A quiet sense that something is being kept from you.",
+    "examples": [
+      "a story that doesn't line up",
+      "a locked drawer in your own house",
+      "the friend who goes quiet when a name comes up"
+    ]
+  },
+  {
+    "id": "uncertain",
+    "word": "uncertain",
+    "family": "fear",
+    "hue": "#a99fce",
+    "parentId": "uneasy",
+    "definition": "Not knowing which way is right — the ground is soft.",
+    "examples": [
+      "a job offer with no clear future",
+      "a relationship with no name",
+      "waiting on a test result"
+    ]
+  },
+  {
+    "id": "dread",
+    "word": "dread",
+    "family": "fear",
+    "hue": "#6f628f",
+    "parentId": "fear",
+    "definition": "A heavy anticipation of something bad — the feeling before the fall.",
+    "examples": [
+      "a meeting on the calendar you can't avoid",
+      "the moment before opening bad news",
+      "counting down to something difficult"
+    ]
+  },
+  {
+    "id": "terrified",
+    "word": "terrified",
+    "family": "fear",
+    "hue": "#4f4570",
+    "parentId": "dread",
+    "definition": "Fear at full size — the body wants to leave.",
+    "examples": [
+      "the moment the car starts sliding",
+      "the noise in the hall at three in the morning",
+      "the phone ringing from the hospital"
+    ]
+  },
+  {
+    "id": "horrified",
+    "word": "horrified",
+    "family": "fear",
+    "hue": "#5b4f78",
+    "parentId": "dread",
+    "definition": "Fear mixed with revulsion — you can't unsee it.",
+    "examples": [
+      "watching the accident happen",
+      "the thing found in the basement",
+      "a video you wish you hadn't opened"
+    ]
+  },
+  {
+    "id": "insecure",
+    "word": "insecure",
+    "family": "fear",
+    "hue": "#8377ae",
+    "parentId": "fear",
+    "definition": "A wobble in your worth — you're not sure you're enough here.",
+    "examples": [
+      "a new room where everyone knows each other",
+      "being asked what you do",
+      "the friend who's better at the thing you care about"
+    ]
+  },
+  {
+    "id": "inadequate",
+    "word": "inadequate",
+    "family": "fear",
+    "hue": "#756aa2",
+    "parentId": "insecure",
+    "definition": "The specific fear of not being enough for the task in front of you.",
+    "examples": [
+      "the first week in a job above your level",
+      "reading the brief and understanding half",
+      "parenting in front of people who seem sure"
+    ]
+  },
+  {
+    "id": "worthless",
+    "word": "worthless",
+    "family": "fear",
+    "hue": "#645a8c",
+    "parentId": "insecure",
+    "definition": "Worth itself under attack — the feeling that you count for nothing.",
+    "examples": [
+      "a day where nothing you did mattered",
+      "being dismissed mid-sentence",
+      "the voice that says everyone is humouring you"
+    ]
+  },
+  {
+    "id": "self-conscious",
+    "word": "self-conscious",
+    "family": "fear",
+    "hue": "#a095c6",
+    "parentId": "insecure",
+    "definition": "Aware of being looked at — every small thing feels visible.",
+    "examples": [
+      "walking into a quiet room late",
+      "your own voice in a recording",
+      "eating alone in a full restaurant"
+    ]
+  },
+  {
+    "id": "vulnerable",
+    "word": "vulnerable",
+    "family": "fear",
+    "hue": "#8a7fb4",
+    "parentId": "fear",
+    "definition": "Open and unprotected — the soft parts showing.",
+    "examples": [
+      "saying you love someone first",
+      "showing work that isn't finished",
+      "asking for help you actually need"
+    ]
+  },
+  {
+    "id": "exposed",
+    "word": "exposed",
+    "family": "fear",
+    "hue": "#6c6096",
+    "parentId": "vulnerable",
+    "definition": "Vulnerable with the cover gone — people can see something you'd rather hide.",
+    "examples": [
+      "being asked a question you can't bluff",
+      "the mistake found after you defended it",
+      "standing in a hospital gown"
+    ]
+  },
+  {
+    "id": "fragile",
+    "word": "fragile",
+    "family": "fear",
+    "hue": "#b9b0d8",
+    "parentId": "vulnerable",
+    "definition": "Held together lightly — a small thing could tip it.",
+    "examples": [
+      "the day after a hard conversation",
+      "the first week back after being ill",
+      "a calm that hasn't been tested yet"
+    ]
+  },
+  {
+    "id": "peaceful",
+    "word": "peaceful",
+    "family": "calm",
+    "hue": "#8fae9a",
+    "parentId": "calm",
+    "definition": "A wide, unhurried calm — nothing pulling at you.",
+    "examples": [
+      "a quiet walk with no destination",
+      "the hour after everyone else falls asleep",
+      "waking up before your alarm, rested"
+    ]
+  },
+  {
     "id": "serene",
     "word": "serene",
     "family": "calm",
@@ -369,6 +1044,292 @@
       "a long exhale after a hard week",
       "sitting somewhere quiet and green",
       "nothing left on your list"
+    ]
+  },
+  {
+    "id": "tranquil",
+    "word": "tranquil",
+    "family": "calm",
+    "hue": "#7fa38c",
+    "parentId": "peaceful",
+    "definition": "Calm that has settled into the room — wide, still, unhurried.",
+    "examples": [
+      "a lake with no wind on it",
+      "an empty church in the afternoon",
+      "the minutes before everyone wakes"
+    ]
+  },
+  {
+    "id": "grounded",
+    "word": "grounded",
+    "family": "calm",
+    "hue": "#75987f",
+    "parentId": "calm",
+    "definition": "A steady, rooted presence — you know where you are.",
+    "examples": [
+      "feet on the floor, slow breath",
+      "finishing something hard and staying with it",
+      "a conversation where you felt fully there"
+    ]
+  },
+  {
+    "id": "steady",
+    "word": "steady",
+    "family": "calm",
+    "hue": "#6b8f78",
+    "parentId": "grounded",
+    "definition": "Calm that holds under weight — you can be leaned on.",
+    "examples": [
+      "the person everyone calls in a crisis",
+      "breathing through a hard meeting",
+      "keeping your voice level when it matters"
+    ]
+  },
+  {
+    "id": "centered",
+    "word": "centered",
+    "family": "calm",
+    "hue": "#86a691",
+    "parentId": "grounded",
+    "definition": "Calm gathered back into yourself — you know where you are again.",
+    "examples": [
+      "five minutes of breathing before you go in",
+      "finally stopping after a frantic week",
+      "standing on your own two feet in a new place"
+    ]
+  },
+  {
+    "id": "relieved",
+    "word": "relieved",
+    "family": "calm",
+    "hue": "#a8c2ad",
+    "parentId": "calm",
+    "definition": "The body letting go after a strain — the long breath after holding it.",
+    "examples": [
+      "hearing the test went fine",
+      "the moment a deadline passes",
+      "finding the thing you thought you lost"
+    ]
+  },
+  {
+    "id": "soothed",
+    "word": "soothed",
+    "family": "calm",
+    "hue": "#b4cbb9",
+    "parentId": "relieved",
+    "definition": "Calm arriving through someone's care — the edge is off.",
+    "examples": [
+      "a hand on your shoulder after a long day",
+      "a warm drink and someone listening",
+      "the voice that says it's okay"
+    ]
+  },
+  {
+    "id": "unburdened",
+    "word": "unburdened",
+    "family": "calm",
+    "hue": "#c1d5c4",
+    "parentId": "relieved",
+    "definition": "The weight set down — not calm yet, just lighter.",
+    "examples": [
+      "sending the email you dreaded writing",
+      "telling someone the truth you'd been carrying",
+      "the keys handed back"
+    ]
+  },
+  {
+    "id": "safe",
+    "word": "safe",
+    "family": "calm",
+    "hue": "#62846e",
+    "parentId": "calm",
+    "definition": "Calm that rests on being protected — nothing here can get you.",
+    "examples": [
+      "the door locked with someone you trust inside",
+      "a seat where your back is to the wall",
+      "a place where people don't get angry"
+    ]
+  },
+  {
+    "id": "secure",
+    "word": "secure",
+    "family": "calm",
+    "hue": "#5b7d69",
+    "parentId": "safe",
+    "definition": "Safe and settled about your footing — it won't be taken from you.",
+    "examples": [
+      "money enough for the month",
+      "a friendship that doesn't need checking",
+      "knowing where you sleep tonight"
+    ]
+  },
+  {
+    "id": "comfortable",
+    "word": "comfortable",
+    "family": "calm",
+    "hue": "#a2bda9",
+    "parentId": "safe",
+    "definition": "Easy in your body and surroundings — nothing to adjust.",
+    "examples": [
+      "an old jumper and no plans",
+      "the part of the sofa that's yours",
+      "a conversation with no gaps to fill"
+    ]
+  },
+  {
+    "id": "capable",
+    "word": "capable",
+    "family": "powerful",
+    "hue": "#c094a3",
+    "parentId": "powerful",
+    "definition": "A settled yes to the task in front of you — the means are there.",
+    "examples": [
+      "the repair you worked out yourself",
+      "being handed something and knowing where to start",
+      "the week you kept every plate spinning"
+    ]
+  },
+  {
+    "id": "competent",
+    "word": "competent",
+    "family": "powerful",
+    "hue": "#b9899b",
+    "parentId": "capable",
+    "definition": "Reliable in your own hands — you know the craft, not just the idea.",
+    "examples": [
+      "the thing you've done so often you stop thinking",
+      "a colleague asking how you do it",
+      "fixing what everyone else gave up on"
+    ]
+  },
+  {
+    "id": "resourceful",
+    "word": "resourceful",
+    "family": "powerful",
+    "hue": "#a06c80",
+    "parentId": "capable",
+    "definition": "Able to find a way with what's here — no perfect tool required.",
+    "examples": [
+      "a shelf made from what was in the shed",
+      "dinner from an almost-empty fridge",
+      "talking your way past a closed door"
+    ]
+  },
+  {
+    "id": "brave",
+    "word": "brave",
+    "family": "powerful",
+    "hue": "#ad7789",
+    "parentId": "powerful",
+    "definition": "Frightened and going anyway — the fear is still there, underneath.",
+    "examples": [
+      "saying the difficult thing out loud",
+      "walking in after being knocked back",
+      "asking the question everyone else avoided"
+    ]
+  },
+  {
+    "id": "daring",
+    "word": "daring",
+    "family": "powerful",
+    "hue": "#cfa6b4",
+    "parentId": "brave",
+    "definition": "Brave with a taste for the risk — leaning toward the edge rather than away.",
+    "examples": [
+      "booking the flight before you can talk yourself out of it",
+      "wearing the thing you weren't sure about",
+      "saying the first word to a stranger"
+    ]
+  },
+  {
+    "id": "resolute",
+    "word": "resolute",
+    "family": "powerful",
+    "hue": "#8a5a6d",
+    "parentId": "brave",
+    "definition": "Brave held still — you've decided, and you aren't reopening it.",
+    "examples": [
+      "the answer that stays the same the third time they ask",
+      "walking out and not looking back",
+      "keeping the boundary when it costs you"
+    ]
+  },
+  {
+    "id": "respected",
+    "word": "respected",
+    "family": "powerful",
+    "hue": "#bd8899",
+    "parentId": "powerful",
+    "definition": "Taken seriously by others — your word carries weight in the room.",
+    "examples": [
+      "being asked for your read before the decision",
+      "a junior colleague quoting you",
+      "the room waiting while you finish"
+    ]
+  },
+  {
+    "id": "valued",
+    "word": "valued",
+    "family": "powerful",
+    "hue": "#c39bab",
+    "parentId": "respected",
+    "definition": "Counted — someone would notice if you weren't there.",
+    "examples": [
+      "being asked back",
+      "your name on the thing you helped make",
+      "a friend who keeps your number"
+    ]
+  },
+  {
+    "id": "worthy",
+    "word": "worthy",
+    "family": "powerful",
+    "hue": "#96677a",
+    "parentId": "respected",
+    "definition": "Deserving without having to earn it again — the case is already made.",
+    "examples": [
+      "taking the seat you were given",
+      "accepting help without a debt attached",
+      "hearing a compliment and letting it land"
+    ]
+  },
+  {
+    "id": "free",
+    "word": "free",
+    "family": "powerful",
+    "hue": "#b27b8e",
+    "parentId": "powerful",
+    "definition": "Nothing holding you in place — the choice is yours to make.",
+    "examples": [
+      "a day with no one expecting you",
+      "the first week out of a job you hated",
+      "going out without checking the time"
+    ]
+  },
+  {
+    "id": "liberated",
+    "word": "liberated",
+    "family": "powerful",
+    "hue": "#d3b0bc",
+    "parentId": "free",
+    "definition": "Free after being held — the difference is still fizzing.",
+    "examples": [
+      "saying the secret you carried for years",
+      "leaving the thing you thought you couldn't",
+      "deleting the app that was eating your evenings"
+    ]
+  },
+  {
+    "id": "independent",
+    "word": "independent",
+    "family": "powerful",
+    "hue": "#9a6a7d",
+    "parentId": "free",
+    "definition": "Free in a way you built — you're standing on your own, by choice.",
+    "examples": [
+      "your first place with only your name on it",
+      "handling it without calling anyone",
+      "a plan that doesn't wait for permission"
     ]
   }
 ]

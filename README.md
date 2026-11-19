@@ -6,6 +6,16 @@ See [`docs/product-vision.md`](./docs/product-vision.md) for the full vision, [`
 
 For contributor and agent guidance, see [`AGENTS.md`](./AGENTS.md).
 
+## Credits
+
+The feeling vocabulary takes its word lists and groupings from published
+feelings wheels: Gloria Willcox, *The Feeling Wheel* (1982); Robert Plutchik,
+*Emotion: A Psychoevolutionary Synthesis* (1980); Brent Williams, *Emotion
+Sensation Feeling Wheel* (2019); and Marshall Rosenberg's Nonviolent
+Communication feelings inventory. No wheel image or layout is reproduced — all
+definitions, examples, hues, and parent links are written for this project. See
+[`docs/emotion-vocabulary.md`](./docs/emotion-vocabulary.md) for the mapping.
+
 ## Quick start
 
 ```bash

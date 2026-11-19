@@ -8,7 +8,7 @@ export interface Emotion {
   id: string;
   /** The word shown on the map and in the explorer. */
   word: string;
-  /** Core feeling this word belongs to (3–5 families total). */
+  /** Core feeling this word belongs to (one of the six families). */
   family: string;
   /** CSS color of the family; sibling words vary only in lightness. */
   hue: string;
