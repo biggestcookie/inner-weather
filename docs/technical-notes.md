@@ -9,7 +9,7 @@
 
 `d3-force` and `anime.js` are described below as required for drift / focus / bloom mechanics but are **not yet installed**. They are listed as planned dependencies in `AGENTS.md` and should be added (via `bun add`) when those features are implemented.
 
-The Logbook storage helpers are implemented — the `logbook` database via `idb`, in `app/utils/recordedEmotions.ts`. The keep flow and the entry page are implemented: _keep this feeling_ in the emotion card saves the moment and opens `/logbook/[id]`, where the moment and an optional note (autosaved on blur/debounce) can be edited and the feeling can be _let go_. The calendar / list rows are planned but **not yet implemented**. The emotion types and sample vocabulary (`app/types/`, `app/assets/data/emotions.json`) are in place.
+The Logbook storage helpers are implemented — the `logbook` database via `idb`, in `app/utils/recordedEmotions.ts`. The keep flow and the entry page are implemented: _keep this feeling_ in the emotion card saves the moment and opens `/logbook/[id]`, where the moment and an optional note (autosaved on blur/debounce) can be edited and the feeling can be _let go_. The Logbook shows the month's kept feelings as family-colored dots, and the selected day's rows (emotion, time, one line of the note) reopen their entry page. The emotion types and sample vocabulary (`app/types/`, `app/assets/data/emotions.json`) are in place.
 
 The responsive shell (mobile-first two-pane layouts) is scaffolded: the emotion card and the Logbook day panel render their quiet empty states until the drift mechanics and the Logbook rows give them content.
 

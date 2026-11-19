@@ -35,13 +35,13 @@
 - [x] Entry page: _let this one go_ — delete, confirmed in two taps
 - [x] Entry page: a quiet state when the kept feeling is gone
 
-## Step 3 — the Logbook contents
+## Step 3 — the Logbook contents ✅
 
-- [ ] Day list rows: the emotion in color, the time, one line of the note —
+- [x] Day list rows: the emotion in color, the time, one line of the note —
       tapping one reopens its entry page
-- [ ] Calendar dots colored by the feeling's family, so a month becomes a small
+- [x] Calendar dots colored by the feeling's family, so a month becomes a small
       sky of its own
-- [ ] The day panel's quiet copy for empty days
+- [x] The day panel's quiet copy for empty days
 
 ## Step 4 — the drift & the focus
 
