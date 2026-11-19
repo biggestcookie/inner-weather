@@ -6,7 +6,7 @@
 // "world"; d3-force drifts the visible set, anime.js pans the camera. Layout is
 // mobile-first (docs/technical-notes.md): the emotion card is an overlay on
 // small screens and a right side pane from `lg`.
-import { animate } from "animejs";
+import { animate, utils } from "animejs";
 import {
   forceCollide,
   forceManyBody,
@@ -36,9 +36,8 @@ const route = useRoute();
 const router = useRouter();
 
 const canvas = ref<HTMLElement | null>(null);
-const peek = ref<HTMLElement | null>(null);
+const card = ref<HTMLElement | null>(null);
 const { width: canvasWidth, height: canvasHeight } = useElementSize(canvas);
-const { height: peekHeight } = useElementSize(peek);
 const reducedMotion = usePreferredReducedMotion();
 
 const nodes = ref<MapNode[]>(emotions.map((emotion) => ({ emotion })));
@@ -153,11 +152,21 @@ function isDesktop(): boolean {
   return window.matchMedia("(min-width: 64rem)").matches;
 }
 
-/** How much of the map the peek and the pill leave uncovered. */
-function visibleHeight(rect: DOMRect): number {
-  if (isDesktop()) return rect.height;
-  const blocked = 88 + peekHeight.value;
-  return Math.max(160, rect.height - blocked);
+/** How much of the map the card leaves uncovered. */
+function visibleSize(rect: DOMRect): { width: number; height: number } {
+  if (isDesktop()) {
+    const cardWidth = card.value?.getBoundingClientRect().width ?? 0;
+    return {
+      width: Math.max(240, rect.width - cardWidth - 24),
+      height: rect.height,
+    };
+  }
+
+  const cardHeight = card.value?.getBoundingClientRect().height ?? 0;
+  return {
+    width: rect.width,
+    height: Math.max(160, rect.height - 88 - cardHeight),
+  };
 }
 
 function panCamera(x: number, y: number) {
@@ -167,6 +176,7 @@ function panCamera(x: number, y: number) {
     return;
   }
 
+  utils.remove(camera);
   animate(camera, { x, y, duration: 900, ease: "outQuad" });
 }
 
@@ -180,8 +190,11 @@ function centerOnSelected() {
     x: node.x ?? 0,
     y: node.y ?? 0,
   };
-  const targetY = visibleHeight(rect) / 2;
-  panCamera(-target.x, targetY - rect.height / 2 - target.y);
+  const visible = visibleSize(rect);
+  panCamera(
+    visible.width / 2 - rect.width / 2 - target.x,
+    visible.height / 2 - rect.height / 2 - target.y
+  );
 }
 
 function moveTo(node: MapNode, x: number, y: number, delay = 0) {
@@ -194,6 +207,7 @@ function moveTo(node: MapNode, x: number, y: number, delay = 0) {
     return;
   }
 
+  utils.remove(node);
   animate(node, { x, y, duration: 700, delay, ease: "outQuad" });
 }
 
@@ -430,9 +444,9 @@ watch(selectedId, (id, previousId) => {
   applySelection(id, previousId ?? null);
 });
 
-// Recenter whenever the visible map changes shape (peek or window).
+// Recenter whenever the visible map changes shape (card or window).
 watch(
-  [selectedEmotion, peekHeight, canvasWidth, canvasHeight],
+  [selectedEmotion, canvasWidth, canvasHeight],
   () => {
     if (selectedEmotion.value) centerOnSelected();
   },
@@ -515,19 +529,8 @@ onBeforeUnmount(() => simulation?.stop());
       </div>
     </div>
 
-    <!-- Mobile: the peek overlays the map just above the pill. -->
-    <aside v-if="selectedEmotion" ref="peek" class="map__peek lg:hidden">
-      <EmotionCard
-        :emotion="selectedEmotion"
-        @select="select"
-        @close="deselect"
-      />
-    </aside>
-
-    <!-- Desktop: a right side pane, always visible. -->
-    <aside
-      class="map__pane hidden lg:flex lg:w-80 lg:shrink-0 lg:flex-col lg:overflow-y-auto xl:w-96"
-    >
+    <!-- The card floats over the map: bottom on mobile, right-middle on desktop. -->
+    <aside v-if="selectedEmotion" ref="card" class="map__card">
       <EmotionCard
         :emotion="selectedEmotion"
         @select="select"
@@ -585,8 +588,15 @@ onBeforeUnmount(() => simulation?.stop());
   border-radius: 999px;
   cursor: pointer;
   will-change: transform;
+  animation: word-in 0.5s ease;
   transition: background-color 0.3s ease, box-shadow 0.3s ease,
     opacity 0.4s ease;
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+  }
 }
 
 .map__word:hover {
@@ -604,7 +614,7 @@ onBeforeUnmount(() => simulation?.stop());
   opacity: 0.35;
 }
 
-.map__peek {
+.map__card {
   position: absolute;
   right: 0.75rem;
   bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
@@ -612,10 +622,26 @@ onBeforeUnmount(() => simulation?.stop());
   z-index: 10;
 }
 
-.map__pane {
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.25);
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
+/* Mirrors --breakpoint-lg: 64rem (docs/technical-notes.md — Responsive
+   layout): one full-width map, with the card floating at the right, vertically
+   centered. The camera shifts the map content left while it is open. */
+@media (min-width: 64rem) {
+  .map__card {
+    top: 50%;
+    right: 1.5rem;
+    bottom: auto;
+    left: auto;
+    width: 20rem;
+    max-height: calc(100dvh - 3rem);
+    overflow-y: auto;
+    transform: translateY(-50%);
+  }
+}
+
+/* Mirrors --breakpoint-xl: 80rem. */
+@media (min-width: 80rem) {
+  .map__card {
+    width: 24rem;
+  }
 }
 </style>

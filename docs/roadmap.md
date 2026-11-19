@@ -16,8 +16,8 @@
       helpers
 - [x] Kept-feeling storage: the `logbook` IndexedDB database (v1) via `idb` in
       `app/utils/recordedEmotions.ts`
-- [x] Responsive shells: map + emotion card (peek overlay on mobile, side pane
-      from `lg`), Logbook month calendar + selected-day panel, entry page
+- [x] Responsive shells: map + emotion card (overlay — bottom on mobile, right
+      on desktop), Logbook month calendar + selected-day panel, entry page
       placeholder
 
 ## Step 2 — the keep flow + the entry page ✅
