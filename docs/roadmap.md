@@ -23,16 +23,16 @@
 ## Step 2 — the keep flow + the entry page ✅
 
 - [x] A record factory (`createRecordedEmotion`) for a fresh keep
-- [x] _keep this feeling_ in the explorer peek — saves the moment and opens the
-      entry page
-- [x] _kept._ — the confirmation on arrival
+- [x] _keep this feeling_ in the explorer peek — opens the draft editor
+- [x] Entry page: edit and read-only modes; _log this feeling_ and _save changes_
 - [x] Entry page: the emotion word, large, in its own color
 - [x] Entry page: the moment — date/time, tappable and editable (feelings are
       often named hours late)
-- [x] Entry page: an optional note with gentle, rotating placeholders,
-      autosaved on blur/debounce
-- [x] Entry page: a way back to the feeling on the map
-- [x] Entry page: _let this one go_ — delete, confirmed in two taps
+- [x] Entry page: an optional note with gentle, rotating placeholders, saved
+      with the entry
+- [x] Entry page: _go back_ — contextual map/logbook navigation
+- [x] Entry page: _let this one go_ — delete or discard, with a dirty-changes
+      prompt
 - [x] Entry page: a quiet state when the kept feeling is gone
 
 ## Step 3 — the Logbook contents ✅

@@ -40,12 +40,13 @@ A **share** button hands out a hotlink back to this exact emotion — the map op
 
 ### 3. The entry page
 
-One screen, two states — first-write and read/edit later:
+One screen, two modes — edit while writing, read-only when revisiting:
 
 - the emotion word, large, in its own color;
-- the date/time, tappable and editable (feelings are often named hours late);
-- an optional notes field with gentle, rotating placeholders — _"What else was in the air today?"_
-- a way back to the feeling on the map.
+- **edit:** the date/time (feelings are often named hours late) and an optional notes field with gentle, rotating placeholders — _"What else was in the air today?"_;
+- **read-only:** the date/time and note as text, with _edit_ in the upper right;
+- _log this feeling_ saves a new draft and returns to read-only; _save changes_ does the same for a kept feeling;
+- a contextual _go back_ and a discard prompt when there are unsaved edits.
 
 ### 4. The Logbook
 
@@ -59,7 +60,7 @@ Every kept feeling lives here — the private weather journal, one slide of the 
 One verb carries the feature: **keep**.
 
 - _"keep this feeling"_ — save it.
-- _"kept."_ — the confirmation; a saved entry is a _kept feeling_.
+- A saved entry is a _kept feeling_.
 - _"let this one go"_ — delete. Never "delete", never "remove".
 
 Copy stays invitational, never interrogative: _"whenever you're ready"_, _"a quiet day"_, _"anything you'd like to remember about this moment?"_ No streaks, no scores, no reminders, no judgment — and everything stays on the device.

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // The Logbook — the calendar plus the selected day's kept feelings. Kept
 // feelings land here as soft dots (docs/product-vision.md). Layout is
-// mobile-first (docs/technical-notes.md): stacked on small screens, side by
-// side from `lg`.
+// mobile-first (docs/technical-notes.md): the calendar is boxed in the top half
+// and the day list owns the bottom half; side by side from `lg`.
 import type { RecordedEmotion } from "~/types/recordedEmotion";
 
 const weekdayLabels = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
@@ -85,7 +85,7 @@ function dotsForDay(day: number): string[] {
 }
 
 function wordOf(record: RecordedEmotion): string {
-  return getEmotionById(record.emotionId)?.word ?? "a kept feeling";
+  return getEmotionById(record.emotionId)?.word ?? "a feeling";
 }
 
 function timeOf(record: RecordedEmotion): string {
@@ -136,64 +136,66 @@ function isToday(day: number): boolean {
 
 <template>
   <section
-    class="logbook flex min-h-dvh flex-col lg:h-dvh lg:flex-row lg:overflow-hidden"
+    class="logbook flex h-dvh flex-col overflow-hidden lg:flex-row"
   >
     <div class="logbook__calendar flex flex-1 flex-col lg:overflow-y-auto">
-      <header class="logbook__header">
-        <button
-          class="logbook__step"
-          aria-label="Previous month"
-          @click="shiftMonth(-1)"
-        >
-          <UIcon name="i-lucide-chevron-left" />
-        </button>
+      <div class="logbook__box">
+        <header class="logbook__header">
+          <button
+            class="logbook__step"
+            aria-label="Previous month"
+            @click="shiftMonth(-1)"
+          >
+            <UIcon name="i-lucide-chevron-left" />
+          </button>
 
-        <h1 class="logbook__month">{{ monthLabel }}</h1>
+          <h1 class="logbook__month">{{ monthLabel }}</h1>
 
-        <button
-          class="logbook__step"
-          aria-label="Next month"
-          @click="shiftMonth(1)"
-        >
-          <UIcon name="i-lucide-chevron-right" />
-        </button>
-      </header>
+          <button
+            class="logbook__step"
+            aria-label="Next month"
+            @click="shiftMonth(1)"
+          >
+            <UIcon name="i-lucide-chevron-right" />
+          </button>
+        </header>
 
-      <div class="logbook__weekdays">
-        <span
-          v-for="label in weekdayLabels"
-          :key="label"
-          class="logbook__weekday"
-        >
-          {{ label }}
-        </span>
-      </div>
-
-      <div class="logbook__grid">
-        <button
-          v-for="(day, index) in days"
-          :key="index"
-          class="logbook__cell"
-          :class="{
-            'logbook__cell--muted': day === null,
-            'logbook__cell--today': day !== null && isToday(day),
-            'logbook__cell--selected': day !== null && day === selectedDay,
-          }"
-          :disabled="day === null"
-          :aria-pressed="day !== null && day === selectedDay"
-          @click="selectedDay = day"
-        >
-          <span>{{ day ?? "" }}</span>
-
-          <span v-if="day !== null" class="logbook__dots" aria-hidden="true">
-            <span
-              v-for="(hue, dot) in dotsForDay(day)"
-              :key="dot"
-              class="logbook__dot"
-              :style="{ background: hue }"
-            />
+        <div class="logbook__weekdays">
+          <span
+            v-for="label in weekdayLabels"
+            :key="label"
+            class="logbook__weekday"
+          >
+            {{ label }}
           </span>
-        </button>
+        </div>
+
+        <div class="logbook__grid">
+          <button
+            v-for="(day, index) in days"
+            :key="index"
+            class="logbook__cell"
+            :class="{
+              'logbook__cell--muted': day === null,
+              'logbook__cell--today': day !== null && isToday(day),
+              'logbook__cell--selected': day !== null && day === selectedDay,
+            }"
+            :disabled="day === null"
+            :aria-pressed="day !== null && day === selectedDay"
+            @click="selectedDay = day"
+          >
+            <span>{{ day ?? "" }}</span>
+
+            <span v-if="day !== null" class="logbook__dots" aria-hidden="true">
+              <span
+                v-for="(hue, dot) in dotsForDay(day)"
+                :key="dot"
+                class="logbook__dot"
+                :style="{ background: hue }"
+              />
+            </span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -225,7 +227,7 @@ function isToday(day: number): boolean {
         {{
           selectedDay === null
             ? "tap a day to see what was in the air."
-            : "a quiet day. kept feelings will rest here."
+            : "a quiet day. feelings will rest here."
         }}
       </p>
     </aside>
@@ -243,10 +245,28 @@ function isToday(day: number): boolean {
     #faf7f2;
 }
 
-/* Bottom padding clears the floating pill at every size. */
+/* Mobile: the calendar owns the top half and the day list the bottom half.
+   The page itself never scrolls; only the list does when a day is busy. */
 .logbook__calendar {
-  gap: 1.25rem;
-  padding: 2rem 1.25rem 6rem;
+  display: flex;
+  flex: 0 0 50%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 0.75rem 1rem;
+}
+
+/* Keep the whole calendar in a 4:3 box. On narrow screens the width fills the
+   phone and the box gets vertical breathing room; on short/wide screens the
+   height wins and the box gets horizontal breathing room. */
+.logbook__box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(100%, calc(66.667dvh - 2rem));
+  min-height: 0;
+  aspect-ratio: 4 / 3;
 }
 
 .logbook__header {
@@ -283,6 +303,12 @@ function isToday(day: number): boolean {
   gap: 0.25rem;
 }
 
+.logbook__grid {
+  flex: 1;
+  grid-auto-rows: 1fr;
+  min-height: 0;
+}
+
 .logbook__weekday {
   font-size: 0.75rem;
   text-align: center;
@@ -291,9 +317,9 @@ function isToday(day: number): boolean {
 
 .logbook__cell {
   display: flex;
+  min-height: 0;
   flex-direction: column;
   gap: 0.2rem;
-  aspect-ratio: 1;
   align-items: center;
   justify-content: center;
   font: inherit;
@@ -301,7 +327,7 @@ function isToday(day: number): boolean {
   color: rgba(51, 65, 85, 0.8);
   background: none;
   border: 0;
-  border-radius: 999px;
+  border-radius: 0.65rem;
   cursor: pointer;
 }
 
@@ -334,9 +360,12 @@ function isToday(day: number): boolean {
 
 .logbook__list {
   display: flex;
+  flex: 0 0 50%;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 1.5rem 1.25rem 6rem;
+  min-height: 0;
+  padding: 1rem 1.25rem calc(5.5rem + env(safe-area-inset-bottom, 0px));
+  overflow-y: auto;
   background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(10px);
 }
@@ -401,5 +430,37 @@ function isToday(day: number): boolean {
   color: rgba(51, 65, 85, 0.6);
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Mirrors --breakpoint-lg: 64rem (docs/technical-notes.md — Responsive
+   layout): the 4:3 mobile box goes away and the two panes sit side by side. */
+@media (min-width: 64rem) {
+  .logbook__calendar {
+    flex: 1 1 auto;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    padding: 2rem 1.25rem 6rem;
+    overflow-y: auto;
+  }
+
+  .logbook__box {
+    display: contents;
+  }
+
+  .logbook__grid {
+    flex: 0 0 auto;
+    grid-auto-rows: auto;
+  }
+
+  .logbook__cell {
+    aspect-ratio: 1;
+    border-radius: 999px;
+  }
+
+  .logbook__list {
+    flex: 0 0 auto;
+    padding: 1.5rem 1.25rem 6rem;
+  }
 }
 </style>

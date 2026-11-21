@@ -15,12 +15,17 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@vite-pwa/nuxt",
     "@vueuse/nuxt",
+    "@vueuse/motion/nuxt",
   ],
   devtools: {
     enabled: true,
   },
   app: {
     baseURL,
+    pageTransition: {
+      name: "page",
+      mode: "out-in",
+    },
     head: {
       title: "inner-weather",
       meta: [

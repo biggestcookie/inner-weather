@@ -9,7 +9,7 @@
 
 `d3-force` and `anime.js` are installed and drive the map's drift and focus (see Interaction & animation layer): words drift with collision avoidance, and tapping one stills the drift while the camera pans it to center.
 
-The Logbook storage helpers are implemented — the `logbook` database via `idb`, in `app/utils/recordedEmotions.ts`. The keep flow and the entry page are implemented: _keep this feeling_ in the emotion card saves the moment and opens `/logbook/[id]`, where the moment and an optional note (autosaved on blur/debounce) can be edited and the feeling can be _let go_. The Logbook shows the month's kept feelings as family-colored dots, and the selected day's rows (emotion, time, one line of the note) reopen their entry page. The map runs the drift and the selection web over a wheel-shaped vocabulary of 103 words (`app/types/`, `app/assets/data/emotions.json`).
+The Logbook storage helpers are implemented — the `logbook` database via `idb`, in `app/utils/recordedEmotions.ts`. The keep flow and the entry page are implemented: _keep this feeling_ opens `/logbook/new?emotion=<id>` in edit mode, and the new feeling stays an in-memory draft (mirrored to `sessionStorage` so a refresh keeps it) until _log this feeling_ saves it. Kept feelings open read-only at `/logbook/[id]`; _edit_ opens the same form and _save changes_ returns to read-only. The date and note are saved only through those buttons — no autosave. Leaving a dirty draft or edit prompts through a shared discard dialog. The Logbook shows the month's kept feelings as family-colored dots, and the selected day's rows (emotion, time, one line of the note) reopen their entry page. The map runs the drift and the selection web over a wheel-shaped vocabulary of 103 words (`app/types/`, `app/assets/data/emotions.json`).
 
 The responsive shell (mobile-first two-pane layouts) is scaffolded: the emotion card and the Logbook day panel render their quiet empty states until the drift mechanics and the Logbook rows give them content.
 
@@ -27,8 +27,8 @@ Every screen is designed at phone width first and widens into side-by-side panes
 - **Breakpoints come from the styling tools, never from ad-hoc widths.** Tailwind CSS v4 (via `@nuxt/ui`) defines the scale — `sm` 40rem, `md` 48rem, `lg` 64rem, `xl` 80rem (`--breakpoint-*` in the Tailwind theme). The desktop two-pane switch is **`lg` (64rem)**. Responsive placement and layout live in Tailwind utility classes in the templates; scoped CSS stays for atmosphere (gradients, glass, blur) and bespoke visuals (the pill, calendar dots), per the stack split above. If scoped CSS must react to a breakpoint, mirror `--breakpoint-lg: 64rem` and say so in a comment.
 - **Shell (`app/app.vue`):** one viewport-tall frame (`100dvh`, so mobile browser toolbars don't jump the layout), with the pill nav floating at the bottom at **every** size and safe-area aware (`viewport-fit=cover` + `env(safe-area-inset-bottom)`). Scrolling panes keep bottom padding so nothing hides behind the pill.
 - **Map (`/`):** one full-bleed view at every size. The emotion card floats over it — above the pill on mobile, and at the right edge, vertically centered, on desktop (`w-80`, `w-96` from `xl`). While it is open the camera shifts the map content into the space left of the card; with nothing focused there is no card, just the drift. The card scrolls internally if its content outgrows the viewport.
-- **Logbook (`/logbook`):** mobile — the calendar stacks above the selected day's list and the page scrolls. Desktop — calendar in the left pane, the day's kept feelings in a fixed-width right pane (`w-80`, `w-96` from `xl`) with its own scroll. Tapping a day selects it and drives the list.
-- **Entry page (`/logbook/[id]`):** stays single-column at every size — a focused reading/writing screen needs no side pane.
+- **Logbook (`/logbook`):** mobile — the viewport is fixed (no page scroll): the calendar fills the top half, boxed in a 4:3 aspect ratio and centered with vertical or horizontal breathing room, while the selected day's list owns the bottom half and scrolls internally. Desktop — calendar in the left pane, the day's kept feelings in a fixed-width right pane (`w-80`, `w-96` from `xl`) with its own scroll. Tapping a day selects it and drives the list.
+- **Entry page (`/logbook/[id]`, `/logbook/new`):** stays single-column at every size — a focused reading/writing screen needs no side pane.
 - **Light DOM rule holds across sizes:** the two-pane layouts add at most one extra card or panel per screen; nothing grows into a component library.
 
 ## Interaction & animation layer
@@ -70,12 +70,12 @@ interface RecordedEmotion {
   id: string
   emotionId: string
   occurredAt: string   // ISO timestamp, user-editable (backfilling a feeling from earlier)
-  note?: string        // optional; autosaved on blur/debounce
+  note?: string        // optional; saved with the log/save action
   createdAt: string
 }
 ```
 
-- Recordings live in IndexedDB — the `logbook` database with one `recordedEmotions` object store (keyPath `id`), opened via `idb` in `app/utils/recordedEmotions.ts` (`createRecordedEmotion`, `saveRecordedEmotion`, `getRecordedEmotion`, `getRecordedEmotions`, `deleteRecordedEmotion`). localStorage stays for ephemeral flags only.
+- Recordings live in IndexedDB — the `logbook` database with one `recordedEmotions` object store (keyPath `id`), opened via `idb` in `app/utils/recordedEmotions.ts` (`createRecordedEmotion`, `saveRecordedEmotion`, `getRecordedEmotion`, `getRecordedEmotions`, `deleteRecordedEmotion`). localStorage stays for ephemeral flags only. The unlogged draft lives in `sessionStorage`, so it survives a refresh but not closing the tab.
 - The schema is versioned from the first release (`dbVersion` in `app/utils/recordedEmotions.ts`, currently v1); bump it and migrate in `upgrade` there, and document any migration here when the shape changes (see `AGENTS.md`).
 - No server sync — the client-only privacy guarantee applies to recordings above all.
 
@@ -89,7 +89,8 @@ The app is served from the domain root (`baseURL: "/"`).
 
 - `/` — the map (drift / focus / bloom). The query param `/?emotion=<id>` deep-links to a single emotion: the map focuses it and opens the emotion card. This is the explorer share button's target and carries only a public emotion id — never personal data.
 - `/logbook` — the calendar plus the selected day's list on one route, as local view state: stacked on mobile, side by side from `lg` (see the responsive layout section above). The calendar renders unconditionally (plain date math + a Tailwind grid — no date library, per the light-DOM rule below): an empty month is a quiet month, not an empty state. A standalone reverse-chronological List view remains in `docs/product-vision.md` but is not part of the current shell.
-- `/logbook/[id]` — the entry page; first-write and read/edit share the same screen. The keep flow opens it with `?fresh=1` for the one-time _kept._ confirmation.
+- `/logbook/new?emotion=<id>` — the draft editor for a new feeling. Edit mode only; _log this feeling_ saves the record. The draft date/note are mirrored to `sessionStorage` so a refresh keeps them.
+- `/logbook/[id]` — a kept feeling, read-only by default. _edit_ opens the date/note form, _save changes_ returns to read-only, and dirty changes prompt before leaving.
 - The explorer is **not** a route: it is the emotion card (`app/components/EmotionCard.vue`) — an overlay over the map (bottom on mobile, right-middle on desktop), _read more_ expanding to full screen — so the atmosphere stays visible while reading. Its share button emits the `/?emotion=<id>` hotlink via `navigator.share`, with a clipboard copy fallback.
 - A persistent bottom pill nav (in `app.vue`, two segments with a sliding indicator) switches between map and logbook at every screen size — the Logbook is reachable from any screen.
 

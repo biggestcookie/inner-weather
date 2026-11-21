@@ -21,17 +21,11 @@ const nearby = computed<Emotion[]>(() =>
   props.emotion ? getRelatedEmotions(props.emotion.id) : []
 );
 
-const keeping = ref(false);
-
-// "keep this feeling" — save the moment, then open its journal page
-// (docs/product-vision.md — the keep).
-async function keep() {
-  if (!props.emotion || keeping.value) return;
-  keeping.value = true;
-
-  const record = createRecordedEmotion(props.emotion.id);
-  await saveRecordedEmotion(record);
-  await navigateTo(`/logbook/${record.id}?fresh=1`);
+// "keep this feeling" opens the draft editor — the entry is only added to the
+// Logbook once it is logged there.
+function openEntry() {
+  if (!props.emotion) return;
+  void navigateTo(`/logbook/new?emotion=${props.emotion.id}`);
 }
 </script>
 
@@ -72,12 +66,7 @@ async function keep() {
         </ul>
       </div>
 
-      <button
-        class="card__keep"
-        type="button"
-        :disabled="keeping"
-        @click="keep"
-      >
+      <button class="card__keep" type="button" @click="openEntry">
         keep this feeling
       </button>
     </template>
@@ -193,11 +182,6 @@ async function keep() {
 
 .card__keep:hover {
   box-shadow: 0 4px 12px rgba(51, 65, 85, 0.12);
-}
-
-.card__keep:disabled {
-  cursor: default;
-  opacity: 0.7;
 }
 
 .card__empty {

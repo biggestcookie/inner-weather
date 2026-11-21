@@ -17,6 +17,7 @@ import {
   type SimulationNodeDatum,
 } from "d3-force";
 import type { Emotion } from "~/types/emotion";
+import type { RecordedEmotion } from "~/types/recordedEmotion";
 
 interface MapNode extends SimulationNodeDatum {
   emotion: Emotion;
@@ -50,6 +51,52 @@ const camera = reactive({ x: 0, y: 0 });
 const anchorTarget = ref<{ x: number; y: number } | null>(null);
 
 let simulation: Simulation<MapNode, undefined> | undefined;
+
+// The daily welcome: shown the first time the map opens on a new calendar day,
+// whether or not that day already has a kept feeling. Dismissing it marks the
+// day as seen so moving between map and Logbook doesn't block the map again.
+const welcomeSeenKey = "inner-weather:daily-welcome";
+const welcomeOpen = ref(false);
+const welcomeRecord = ref<RecordedEmotion | null>(null);
+const welcomeMessage = ref("");
+const welcomeDay = ref("");
+
+/** Local calendar key — the day as it was lived, not as UTC sees it. */
+function localDayKey(date: Date): string {
+  const pad = (part: number) => String(part).padStart(2, "0");
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(
+    date.getDate()
+  )}`;
+}
+
+async function maybeShowWelcome() {
+  if (welcomeOpen.value) return;
+
+  const today = localDayKey(new Date());
+  if (localStorage.getItem(welcomeSeenKey) === today) return;
+
+  const records = await getRecordedEmotions();
+  welcomeRecord.value =
+    records.find(
+      (record) => localDayKey(new Date(record.occurredAt)) === today
+    ) ?? null;
+  welcomeMessage.value = pickWelcomeMessage();
+  welcomeDay.value = today;
+  welcomeOpen.value = true;
+}
+
+function closeWelcome() {
+  if (welcomeDay.value) {
+    localStorage.setItem(welcomeSeenKey, welcomeDay.value);
+  }
+  welcomeOpen.value = false;
+}
+
+function revisitToday() {
+  const record = welcomeRecord.value;
+  closeWelcome();
+  if (record) void navigateTo(`/logbook/${record.id}`);
+}
 
 const selectedId = computed<string | null>(() => {
   const id = route.query.emotion;
@@ -453,6 +500,10 @@ watch(
   { flush: "post" }
 );
 
+function handleVisibility() {
+  if (document.visibilityState === "visible") void maybeShowWelcome();
+}
+
 onMounted(() => {
   // The simple words start in a loose cloud; the physics settles them.
   for (const node of nodes.value) {
@@ -476,9 +527,15 @@ onMounted(() => {
     applySelection(selectedId.value, null);
     nextTick(centerOnSelected);
   }
+
+  document.addEventListener("visibilitychange", handleVisibility);
+  void maybeShowWelcome();
 });
 
-onBeforeUnmount(() => simulation?.stop());
+onBeforeUnmount(() => {
+  simulation?.stop();
+  document.removeEventListener("visibilitychange", handleVisibility);
+});
 </script>
 
 <template>
@@ -537,6 +594,17 @@ onBeforeUnmount(() => simulation?.stop());
         @close="deselect"
       />
     </aside>
+
+    <!-- First open of a new day: the out-of-focus cloud, then the map. -->
+    <Transition name="welcome">
+      <DailyWelcome
+        v-if="welcomeOpen"
+        :record="welcomeRecord"
+        :message="welcomeMessage"
+        @start="closeWelcome"
+        @revisit="revisitToday"
+      />
+    </Transition>
   </div>
 </template>
 
