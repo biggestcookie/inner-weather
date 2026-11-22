@@ -20,6 +20,8 @@ const emit = defineEmits<{
 
 const startButton = ref<HTMLButtonElement | null>(null);
 const reducedMotion = usePreferredReducedMotion();
+const version = useRuntimeConfig().public.version;
+const { state: installState, install: installApp } = usePwaInstall();
 
 const messageInitial = computed(() =>
   reducedMotion.value === "reduce" ? { opacity: 1 } : { opacity: 0, y: 18 }
@@ -153,6 +155,18 @@ onMounted(() => startButton.value?.focus());
           let's start
         </button>
       </div>
+
+      <!-- The quiet offer to install: under the buttons, out of the way. -->
+      <p v-if="installState === 'supported'" class="welcome__install">
+        <button type="button" class="welcome__install-link" @click="installApp">
+          install this app
+        </button>
+      </p>
+      <p v-else-if="installState === 'partial'" class="welcome__install">
+        share → add to home screen
+      </p>
+
+      <p class="welcome__version">v{{ version }}</p>
     </div>
   </div>
 </template>
@@ -374,6 +388,36 @@ onMounted(() => startButton.value?.focus());
   color: rgba(51, 65, 85, 0.88);
   background: rgba(255, 255, 255, 0.85);
   border-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Quiet provenance for the build that's running — bottom of the screen. */
+.welcome__version {
+  margin: 1.5rem auto 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: rgba(51, 65, 85, 0.35);
+}
+
+.welcome__install {
+  margin: 1.25rem auto 0;
+  font-size: 0.8rem;
+  color: rgba(51, 65, 85, 0.45);
+  text-align: center;
+}
+
+.welcome__install-link {
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.welcome__install-link:hover {
+  color: rgba(51, 65, 85, 0.7);
 }
 
 /* Room for two side-by-side choices once the screen widens. */

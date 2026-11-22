@@ -52,14 +52,13 @@ const anchorTarget = ref<{ x: number; y: number } | null>(null);
 
 let simulation: Simulation<MapNode, undefined> | undefined;
 
-// The daily welcome: shown the first time the map opens on a new calendar day,
-// whether or not that day already has a kept feeling. Dismissing it marks the
-// day as seen so moving between map and Logbook doesn't block the map again.
-const welcomeSeenKey = "inner-weather:daily-welcome";
+// The welcome: shown every time the app opens, whether or not today already
+// has a kept feeling. Dismissing it silences it for the rest of the load, so
+// moving between the map and the Logbook doesn't block the map again.
 const welcomeOpen = ref(false);
+const welcomeDismissed = ref(false);
 const welcomeRecord = ref<RecordedEmotion | null>(null);
 const welcomeMessage = ref("");
-const welcomeDay = ref("");
 
 /** Local calendar key — the day as it was lived, not as UTC sees it. */
 function localDayKey(date: Date): string {
@@ -70,25 +69,20 @@ function localDayKey(date: Date): string {
 }
 
 async function maybeShowWelcome() {
-  if (welcomeOpen.value) return;
+  if (welcomeOpen.value || welcomeDismissed.value) return;
 
   const today = localDayKey(new Date());
-  if (localStorage.getItem(welcomeSeenKey) === today) return;
-
   const records = await getRecordedEmotions();
   welcomeRecord.value =
     records.find(
       (record) => localDayKey(new Date(record.occurredAt)) === today
     ) ?? null;
   welcomeMessage.value = pickWelcomeMessage();
-  welcomeDay.value = today;
   welcomeOpen.value = true;
 }
 
 function closeWelcome() {
-  if (welcomeDay.value) {
-    localStorage.setItem(welcomeSeenKey, welcomeDay.value);
-  }
+  welcomeDismissed.value = true;
   welcomeOpen.value = false;
 }
 

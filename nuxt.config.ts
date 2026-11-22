@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from "nuxt/config";
+import pkg from "./package.json";
 
 // GitHub Pages serves the app under /inner-weather/; dev stays at the root.
 const baseURL =
@@ -7,6 +8,11 @@ const baseURL =
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
+  runtimeConfig: {
+    public: {
+      version: pkg.version,
+    },
+  },
   modules: [
     "@nuxt/eslint",
     "@nuxt/ui",
