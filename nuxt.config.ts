@@ -28,8 +28,18 @@ export default defineNuxtConfig({
     },
     head: {
       title: "inner-weather",
+      // Static so Chrome finds the manifest before the client bundle runs.
+      link: [
+        { rel: "manifest", href: `${baseURL}manifest.webmanifest` },
+        {
+          rel: "apple-touch-icon",
+          href: `${baseURL}apple-touch-icon.png`,
+          sizes: "180x180",
+        },
+      ],
       meta: [
         { charset: "utf-8" },
+        { name: "theme-color", content: "#faf7f2" },
         {
           name: "viewport",
           content: "width=device-width, initial-scale=1, viewport-fit=cover",
@@ -113,6 +123,7 @@ export default defineNuxtConfig({
     base: baseURL,
 
     manifest: {
+      id: baseURL,
       name: "inner-weather",
       short_name: "inner-weather",
       description:
@@ -121,11 +132,31 @@ export default defineNuxtConfig({
       background_color: "#faf7f2",
       display: "standalone",
       start_url: baseURL,
-      icons: [],
+      scope: baseURL,
+      icons: [
+        {
+          src: `${baseURL}pwa-192x192.png`,
+          sizes: "192x192",
+          type: "image/png",
+          purpose: "any",
+        },
+        {
+          src: `${baseURL}pwa-512x512.png`,
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "any",
+        },
+        {
+          src: `${baseURL}pwa-maskable-512x512.png`,
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "maskable",
+        },
+      ],
     },
 
     workbox: {
-      globPatterns: ["**/*.{js,css,html,png,svg,ico,woff,woff2,json}"],
+      globPatterns: ["**/*.{js,css,html,png,svg,ico,woff,woff2,json,webmanifest}"],
     },
   },
 });

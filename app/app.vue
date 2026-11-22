@@ -15,8 +15,6 @@ const isLogbook = computed(() => route.path.startsWith("/logbook"));
 
 <template>
   <UApp>
-    <VitePwaManifest />
-
     <UMain class="shell">
       <NuxtPage />
     </UMain>
